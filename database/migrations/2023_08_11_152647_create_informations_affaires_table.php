@@ -12,8 +12,20 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('informations_affaires', function (Blueprint $table) {
-            $table->id();
+            $table->id('id_info_affaires');
+            $table->string('nom');
+            $table->text('description');
+            $table->date('date_debut');
+            $table->date('date_fin');
+            $table->string('responsable');
+            $table->string('lieu');
+            $table->string('statut');
+            $table->String('budget');
+            $table->unsignedBigInteger('id_acteur');
             $table->timestamps();
+
+            $table->foreign('id_acteur')->references('id_acteur')->on('acteurs')->onDelete('cascade');
+
         });
     }
 

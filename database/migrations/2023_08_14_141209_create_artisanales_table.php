@@ -11,18 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('informations_communautaires', function (Blueprint $table) {
-            $table->id('id_information_communautaire');
+        Schema::create('artisanales', function (Blueprint $table) {
+            $table->id('id_artisanales');
             $table->string('nom');
             $table->string('description');
-            $table->date('date_creation');
-            $table->string('site_web');
-            $table->string('objectif');
-            $table->unsignedBigInteger('id_acteur');
-            $table->text('evenement');
+            $table->integer('prix');
+            $table->string('categorie');
+            $table->string('collection');
+            $table->string('etat');
+            $table->string('photo');
             $table->string('statut');
-            $table->foreignId('id_acteur')->constrained('acteurs')->onDelete('cascade');
-
+            $table->unsignedBigInteger('id_acteur');
+            $table->foreign('id_acteur')->references('id_acteur')->on('acteurs');
             $table->timestamps();
         });
     }
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('informations_communautaires');
+        Schema::dropIfExists('artisanales');
     }
 };

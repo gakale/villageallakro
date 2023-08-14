@@ -5,27 +5,24 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Acteur;
-class InformationAffaire extends Model
+class Opportunite extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'id_information_affaire',
-        'id_acteur',
-        'nom',
+        'type_opportunite',
         'description',
-        'date_debut',
-        'date_fin',
-        'responsable',
-        'lieu',
+        'date_disponibilite',
+        'prix',
+        'id_acteur',
+        'localisation',
+        'etat',
+        'photo',
         'statut',
-        'budget',
-
     ];
 
     public function acteur()
     {
-        return $this->belongsTo(Acteur::class, 'id_acteur');
+        return $this->belongsTo(Acteur::class);
     }
-
 }

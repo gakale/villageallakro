@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\OpportunitesAchatResource\Pages;
-use App\Filament\Resources\OpportunitesAchatResource\RelationManagers;
-use App\Models\OpportunitesAchat;
+use App\Filament\Resources\OpportuniteResource\Pages;
+use App\Filament\Resources\OpportuniteResource\RelationManagers;
+use App\Models\Opportunite;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
@@ -13,9 +13,9 @@ use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class OpportunitesAchatResource extends Resource
+class OpportuniteResource extends Resource
 {
-    protected static ?string $model = OpportunitesAchat::class;
+    protected static ?string $model = Opportunite::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
@@ -54,9 +54,9 @@ class OpportunitesAchatResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListOpportunitesAchats::route('/'),
-            'create' => Pages\CreateOpportunitesAchat::route('/create'),
-            'edit' => Pages\EditOpportunitesAchat::route('/{record}/edit'),
+            'index' => Pages\ListOpportunites::route('/'),
+            'create' => Pages\CreateOpportunite::route('/create'),
+            'edit' => Pages\EditOpportunite::route('/{record}/edit'),
         ];
     }    
 }

@@ -11,6 +11,11 @@ use App\Models\Demenagement;
 use App\Models\Competence;
 use App\Models\Amenagement;
 use App\Models\OffreEmploi;
+use App\Models\InformationAffaire;
+use App\Models\InformationCommunautaire;
+use App\Models\Opportunite;
+use App\Models\Artisanale;
+use App\Models\PromotionArtisanale;
 
 class Acteur extends Model
 {
@@ -55,5 +60,26 @@ class Acteur extends Model
         return $this->hasMany(OffreEmploi::class, 'id_acteur');
     }
 
+    public function informationsAffaires()
+    {
+        return $this->hasMany(InformationAffaire::class, 'id_acteur');
+    }
 
+    public function informationsCommunautaires()
+    {
+        return $this->hasMany(InformationCommunautaire::class, 'id_acteur');
+    }
+
+    public function opportunites()
+    {
+        return $this->hasMany(Opportunite::class, 'id_acteur');
+    }
+
+    public function artisanale(){
+        return $this->hasMany(Artisanale::class, 'id_acteur');
+    }
+
+    public function promotionArtisanale(){
+        return $this->hasMany(PromotionArtisanale::class, 'id_acteur');
+    }
 }

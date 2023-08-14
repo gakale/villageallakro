@@ -11,27 +11,26 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('informations_communautaires', function (Blueprint $table) {
-            $table->id('id_information_communautaire');
-            $table->string('nom');
+        Schema::create('opportunites', function (Blueprint $table) {
+            $table->id('id_opportunite');
+            $table->string('type_opportunite');
             $table->string('description');
-            $table->date('date_creation');
-            $table->string('site_web');
-            $table->string('objectif');
+            $table->string('date_disponibilite');
+            $table->integer('prix');
             $table->unsignedBigInteger('id_acteur');
-            $table->text('evenement');
+            $table->foreign('id_acteur')->references('id_acteur')->on('acteurs');
+            $table->string('localisation');
+            $table->string('etat');
+            $table->string('photo');
             $table->string('statut');
-            $table->foreignId('id_acteur')->constrained('acteurs')->onDelete('cascade');
-
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('informations_communautaires');
+        Schema::dropIfExists('opportunites');
     }
 };

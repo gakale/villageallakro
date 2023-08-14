@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\OpportuniteVenteResource\Pages;
-use App\Filament\Resources\OpportuniteVenteResource\RelationManagers;
-use App\Models\OpportuniteVente;
+use App\Filament\Resources\ArtisanaleResource\Pages;
+use App\Filament\Resources\ArtisanaleResource\RelationManagers;
+use App\Models\Artisanale;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
@@ -13,9 +13,9 @@ use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class OpportuniteVenteResource extends Resource
+class ArtisanaleResource extends Resource
 {
-    protected static ?string $model = OpportuniteVente::class;
+    protected static ?string $model = Artisanale::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
@@ -54,9 +54,9 @@ class OpportuniteVenteResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListOpportuniteVentes::route('/'),
-            'create' => Pages\CreateOpportuniteVente::route('/create'),
-            'edit' => Pages\EditOpportuniteVente::route('/{record}/edit'),
+            'index' => Pages\ListArtisanales::route('/'),
+            'create' => Pages\CreateArtisanale::route('/create'),
+            'edit' => Pages\EditArtisanale::route('/{record}/edit'),
         ];
     }    
 }
