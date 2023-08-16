@@ -11,7 +11,7 @@ class CentreInteret extends Model
 
     public function acteurs()
     {
-        return $this->belongsToMany(Acteur::class, 'acteur_centre_interet', 'id_centre_interet', 'id_acteur');
+        return $this->belongsToMany(Acteur::class, 'acteur_centre_interet');
     }
 
 }

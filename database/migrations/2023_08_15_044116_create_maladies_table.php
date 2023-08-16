@@ -12,7 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('maladies', function (Blueprint $table) {
-            $table->id();
+            $table->id('id_maladies');
+            $table->string('nom');
+            $table->string('description');
+            $table->string('symptomes');
+            $table->string('traitement');
+            $table->string('statut');
+            $table->date('date_debut');
+            $table->date('date_fin');
+            $table->unsignedBigInteger('id_epidemie');
+            $table->foreign('id_epidemie')->references('id_epidemie')->on('epidemies');
             $table->timestamps();
         });
     }

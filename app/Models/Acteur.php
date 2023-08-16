@@ -4,19 +4,24 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Metier;
 use App\Models\CentreInteret;
 use App\Models\Demenagement;
 use App\Models\Competence;
-use App\Models\Amenagement;
 use App\Models\OffreEmploi;
 use App\Models\InformationAffaire;
 use App\Models\InformationCommunautaire;
 use App\Models\Opportunite;
 use App\Models\Artisanale;
 use App\Models\PromotionArtisanale;
-
+use App\Models\Evenement_vie;
+use App\Models\Actualite;
+use App\Models\Maladie;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use App\Models\Centre_sante;
 class Acteur extends Model
 {
     use HasFactory;
@@ -33,53 +38,81 @@ class Acteur extends Model
         'nbre_enfant',
     ];
 
-    public function metiers()
+    public function metier(): hasMany
     {
         return $this->hasMany(Metier::class);
     }
-    public function centresInteret()
+    public function centreInteret():belongsToMany
     {
-        return $this->belongsToMany(CentreInteret::class, 'acteur_centre_interet', 'id_acteur', 'id_centre_interet');
+        return $this->belongsToMany(CentreInteret::class, 'acteur_centre_interet');
     }
     // Relation avec le modèle Demenagement
-    public function demenagements()
+    public function demenagement():hasMany
     {
-        return $this->hasMany(Demenagement::class, 'id_acteur');
+        return $this->hasMany(Demenagement::class);
     }
-    public function competences()
+    public function competence(): belongsToMany
     {
         return $this->belongsToMany(Competence::class, 'acteur_competence', 'id_acteur', 'id_competence');
     }
-    public function amenagements()
+    public function amenagement():hasMany
     {
-        return $this->hasMany(Amenagement::class, 'id_acteur');
+        return $this->hasMany(Amenagement::class);
     }
 
-    public function offresEmploi()
+    public function OffreEmploi()
     {
-        return $this->hasMany(OffreEmploi::class, 'id_acteur');
+        return $this->hasMany(OffreEmploi::class);
     }
 
-    public function informationsAffaires()
+    public function InformationAffaire() : HasMany
     {
-        return $this->hasMany(InformationAffaire::class, 'id_acteur');
+        return $this->hasMany(InformationAffaire::class);
     }
 
-    public function informationsCommunautaires()
+    public function InformationCommunautaire(): HasMany
     {
-        return $this->hasMany(InformationCommunautaire::class, 'id_acteur');
+        return $this->hasMany(InformationCommunautaire::class );
     }
 
-    public function opportunites()
+    public function opportunite():HasMany
     {
-        return $this->hasMany(Opportunite::class, 'id_acteur');
+        return $this->hasMany(Opportunite::class);
     }
 
-    public function artisanale(){
-        return $this->hasMany(Artisanale::class, 'id_acteur');
+    public function artisanale():HasMany{
+        return $this->hasMany(Artisanale::class);
     }
 
-    public function promotionArtisanale(){
-        return $this->hasMany(PromotionArtisanale::class, 'id_acteur');
+    public function promotionartisanale(): HasMany
+    {
+        return $this->hasMany(PromotionArtisanale::class);
     }
+
+    public function evenement_vie() : HasMany
+    {
+        return $this->hasMany(Evenement_vie::class);
+    }
+
+    public function actualite(): HasMany
+    {
+        return $this->hasMany(Actualite::class);
+    }
+
+    public function maladies(): belongsToMany
+    {
+        return $this->belongsToMany(Maladie::class, 'acteur_maladies');
+    }
+
+    public function CentreSante(): belongsToMany
+    {
+        return $this->belongsToMany(CentreSante::class, 'acteurs_centresantes');
+    }
+
+    public function projetmairie(): BelongsTo
+    {
+        return $this->belongsTo(ProjetMairie::class, 'id_projet_mairie');
+    }
+
+
 }

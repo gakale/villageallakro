@@ -11,16 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('actualites', function (Blueprint $table) {
-            $table->id('id_actualites');
-            $table->string('titre');
-            $table->string('contenu');
-            $table->string('image');
-            $table->string('statut');
-            $table->date('date_publication');
-            $table->string('categorie');
+        Schema::create('acteurs_maladies', function (Blueprint $table) {
+            $table->id('id_acteurs_maladies');
             $table->unsignedBigInteger('id_acteur');
             $table->foreign('id_acteur')->references('id_acteur')->on('acteurs');
+            $table->unsignedBigInteger('id_maladie');
+            $table->foreign('id_maladie')->references('id_maladie')->on('maladies');
+            $table->string('statut');
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('actualites');
+        Schema::dropIfExists('acteurs_maladies');
     }
 };
