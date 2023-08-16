@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('salaire');
             $table->string('date_debut');
             $table->string('date_fin');
-            $table->foreignId('id_acteur')->constrained('acteurs')->onDelete('cascade');
-            $table->timestamps();
+            $table->unsignedBigInteger('id_acteur'); // Si vous avez une relation avec le modèle Acteur
+            $table->foreign('id_acteur')->references('id_acteur')->on('acteurs')->onDelete('cascade');            $table->timestamps();
         });
     }
 

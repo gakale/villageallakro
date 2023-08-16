@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('libelle');
             $table->string('description');
             $table->string('image');
-
             $table->unsignedBigInteger('id_acteur'); // Si vous avez une relation avec le modèle Acteur
             $table->foreign('id_acteur')->references('id_acteur')->on('acteurs')->onDelete('cascade');
             $table->timestamps();
