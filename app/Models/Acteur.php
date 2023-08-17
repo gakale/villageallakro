@@ -26,6 +26,7 @@ class Acteur extends Model
 {
     use HasFactory;
     protected $fillable = [
+
         'nom',
         'prenom',
         'sexe',
@@ -38,16 +39,12 @@ class Acteur extends Model
         'nbre_enfant',
     ];
 
-    public static function countBy(string $string)
-    {
-        Acteur::countBy('type');
-    }
 
     public function metier(): hasMany
     {
         return $this->hasMany(Metier::class);
     }
-    public function centreInteret():belongsToMany
+    public function centreInterets():belongsToMany
     {
         return $this->belongsToMany(CentreInteret::class, 'acteur_centre_interet');
     }

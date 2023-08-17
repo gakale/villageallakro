@@ -12,6 +12,12 @@ use Filament\Resources\Table;
 use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Select;
+use Filament\Resources\RelationManagers\RelationManager;
+use Filament\Resources\RelationManagers\RelationManager as RelationManagerAlias;
+use Filament\Forms\Components\MultiSelect;
+use Filament\Forms\Components\BelongsToPicker;
 
 class ActualitesResource extends Resource
 {
@@ -23,7 +29,15 @@ class ActualitesResource extends Resource
     {
         return $form
             ->schema([
-                //
+                TextInput::make('titre')->label('Titre')->required(),
+                TextInput::make('description')->label('Description')->required(),
+                Forms\Components\DatePicker::make('date')->label('Date')->required(),
+                TextInput::make('image')->label('Image')->required(),
+                Select::make('id_acteur')
+                    ->label('Acteur')
+                    ->relationship('acteur', 'id_acteur')
+
+                    ->required(),
             ]);
     }
 
@@ -31,7 +45,11 @@ class ActualitesResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('titre')->sortable()->searchable()->label('Titre'),
+                Tables\Columns\TextColumn::make('description')->sortable()->searchable()->label('Description'),
+                Tables\Columns\TextColumn::make('date')->sortable()->searchable()->label('Date'),
+                Tables\Columns\TextColumn::make('image')->sortable()->searchable()->label('Image'),
+                Tables\Columns\TextColumn::make('id_acteur')->sortable()->searchable()->label('Acteur'),
             ])
             ->filters([
                 //
@@ -43,14 +61,14 @@ class ActualitesResource extends Resource
                 Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -58,5 +76,5 @@ class ActualitesResource extends Resource
             'create' => Pages\CreateActualites::route('/create'),
             'edit' => Pages\EditActualites::route('/{record}/edit'),
         ];
-    }    
+    }
 }

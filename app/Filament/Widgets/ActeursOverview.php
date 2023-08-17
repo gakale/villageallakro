@@ -10,6 +10,7 @@ use App\Models\Acteur;
 
 class ActeursOverview extends BaseWidget
 {
+
     protected function getCards(): array
     {
         return [

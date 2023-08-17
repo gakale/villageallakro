@@ -13,7 +13,7 @@ use Filament\Resources\Table;
 use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-
+use Filament\Forms\Components\Select;
 class ActeurResource extends Resource
 {
     protected static ?string $model = Acteur::class;
@@ -38,7 +38,6 @@ class ActeurResource extends Resource
                 TextInput::make('telephone')->label('Téléphone')->required()->tel(), // Ajout de la méthode tel()
                 TextInput::make('email')->label('Email')->required()->email(),
                 TextInput::make('nbre_enfant')->label('Nombre d\'enfants')->required(),
-                TextInput::make('profession')->label('Profession')->required(),
             ]);
     }
 
@@ -57,13 +56,13 @@ class ActeurResource extends Resource
                 Tables\Columns\TextColumn::make('telephone')->label('Téléphone'),
                 Tables\Columns\TextColumn::make('email')->label('Email'),
                 Tables\Columns\TextColumn::make('nbre_enfant')->label('Nombre d\'enfants'),
-                Tables\Columns\TextColumn::make('profession')->label('Profession'),
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),

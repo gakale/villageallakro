@@ -20,7 +20,7 @@ return new class extends Migration
             $table->date('date_publication');
             $table->string('categorie');
             $table->unsignedBigInteger('id_acteur');
-            $table->foreign('id_acteur')->references('id_acteur')->on('acteurs');
+            $table->foreign('id')->references('id_acteur')->on('acteurs');
             $table->timestamps();
         });
     }

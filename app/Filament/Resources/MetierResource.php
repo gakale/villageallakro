@@ -12,7 +12,9 @@ use Filament\Resources\Table;
 use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\FileUpload;
 class MetierResource extends Resource
 {
     protected static ?string $model = Metier::class;
@@ -23,7 +25,10 @@ class MetierResource extends Resource
     {
         return $form
             ->schema([
-                //
+                TextInput::make('libelle')->label('Nom de libelle')->required(),
+                TextInput::make('description')->label('Description')->required(),
+                FileUpload::make('image')->label('Image')->required()->image()->directory('images/metiers'),
+
             ]);
     }
 
@@ -31,7 +36,10 @@ class MetierResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('id')->sortable()->searchable()->label('ID'),
+                Tables\Columns\TextColumn::make('libelle')->sortable()->searchable()->label('Nom de libelle'),
+                Tables\Columns\TextColumn::make('description')->label('Description'),
+                Tables\Columns\ImageColumn::make('image')->label('Image'),
             ])
             ->filters([
                 //
@@ -43,14 +51,14 @@ class MetierResource extends Resource
                 Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -58,5 +66,5 @@ class MetierResource extends Resource
             'create' => Pages\CreateMetier::route('/create'),
             'edit' => Pages\EditMetier::route('/{record}/edit'),
         ];
-    }    
+    }
 }

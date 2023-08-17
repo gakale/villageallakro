@@ -5,6 +5,7 @@ namespace App\Filament\Resources\ActeurResource\Pages;
 use App\Filament\Resources\ActeurResource;
 use Filament\Pages\Actions;
 use Filament\Resources\Pages\ListRecords;
+use Filament\Tables\Table;
 
 class ListActeurs extends ListRecords
 {
@@ -16,4 +17,7 @@ class ListActeurs extends ListRecords
             Actions\CreateAction::make(),
         ];
     }
+
+
+
 }
