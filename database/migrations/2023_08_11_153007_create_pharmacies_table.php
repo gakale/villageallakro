@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('statut');
 
             $table->unsignedBigInteger('id_centre_sante');
-            $table->foreign('id_centre_sante')->references('id_centre_sante')->on('centres_sante')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_centre_sante')->references('id_centre_sante')->on('centre_santes')->onDelete('cascade')->onUpdate('cascade');
 
 
             $table->timestamps();

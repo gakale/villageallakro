@@ -6,22 +6,20 @@ use App\Filament\Resources\ActeurResource\Pages;
 use App\Filament\Resources\ActeurResource\RelationManagers;
 use App\Models\Acteur;
 use Filament\Forms;
+use Filament\Forms\Components\TextInput;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
-use Filament\Forms\Components\TextInput; // Utilisation de TextInput au lieu de Text
-use Filament\Forms\Components\Select;
-use Filament\Forms\Components\DatePicker;
-use Filament\Tables\Actions\DeleteAction;
-use Filament\Tables\Actions\EditAction;
-use Filament\Resources\Forms\Components\BelongsToManySelect;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class ActeurResource extends Resource
 {
     protected static ?string $model = Acteur::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-user-group';
+
 
     public static function form(Form $form): Form
     {
@@ -41,12 +39,6 @@ class ActeurResource extends Resource
                 TextInput::make('email')->label('Email')->required()->email(),
                 TextInput::make('nbre_enfant')->label('Nombre d\'enfants')->required(),
                 TextInput::make('profession')->label('Profession')->required(),
-
-                BelongsToManySelect::make('centresInteret')
-                    ->relationship('centresInteret', 'nom_centre_interet')
-                    ->multiple()
-                    ->placeholder('Sélectionnez les centres d’intérêt'),
-
             ]);
     }
 
@@ -54,6 +46,7 @@ class ActeurResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('id_acteur')->sortable()->searchable()->label('ID'),
                 Tables\Columns\TextColumn::make('nom')->sortable()->searchable()->label('Nom de l\'acteur'),
                 Tables\Columns\TextColumn::make('prenom')->label('Prénom de l\'acteur'),
                 Tables\Columns\TextColumn::make('sexe')->label('Sexe'),
@@ -65,16 +58,12 @@ class ActeurResource extends Resource
                 Tables\Columns\TextColumn::make('email')->label('Email'),
                 Tables\Columns\TextColumn::make('nbre_enfant')->label('Nombre d\'enfants'),
                 Tables\Columns\TextColumn::make('profession')->label('Profession'),
-
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
-
-
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),

@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\MetierResource\Pages;
-use App\Filament\Resources\MetierResource\RelationManagers;
-use App\Models\Metier;
+use App\Filament\Resources\ServiceSanteResource\Pages;
+use App\Filament\Resources\ServiceSanteResource\RelationManagers;
+use App\Models\ServiceSante;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
@@ -13,9 +13,9 @@ use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class MetierResource extends Resource
+class ServiceSanteResource extends Resource
 {
-    protected static ?string $model = Metier::class;
+    protected static ?string $model = ServiceSante::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
@@ -54,9 +54,9 @@ class MetierResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListMetiers::route('/'),
-            'create' => Pages\CreateMetier::route('/create'),
-            'edit' => Pages\EditMetier::route('/{record}/edit'),
+            'index' => Pages\ListServiceSantes::route('/'),
+            'create' => Pages\CreateServiceSante::route('/create'),
+            'edit' => Pages\EditServiceSante::route('/{record}/edit'),
         ];
     }    
 }

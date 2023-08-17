@@ -17,7 +17,7 @@ use App\Models\Opportunite;
 use App\Models\Artisanale;
 use App\Models\PromotionArtisanale;
 use App\Models\Evenement_vie;
-use App\Models\Actualite;
+use App\Models\Actualites;
 use App\Models\Maladie;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -37,6 +37,11 @@ class Acteur extends Model
         'email',
         'nbre_enfant',
     ];
+
+    public static function countBy(string $string)
+    {
+        Acteur::countBy('type');
+    }
 
     public function metier(): hasMany
     {
@@ -96,7 +101,7 @@ class Acteur extends Model
 
     public function actualite(): HasMany
     {
-        return $this->hasMany(Actualite::class);
+        return $this->hasMany(Actualites::class);
     }
 
     public function maladies(): belongsToMany
