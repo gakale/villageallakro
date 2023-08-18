@@ -18,6 +18,7 @@ class MaladieResource extends Resource
     protected static ?string $model = Maladie::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationGroup = 'Gestion de Santé';
 
     public static function form(Form $form): Form
     {
@@ -43,14 +44,14 @@ class MaladieResource extends Resource
                 Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -58,5 +59,5 @@ class MaladieResource extends Resource
             'create' => Pages\CreateMaladie::route('/create'),
             'edit' => Pages\EditMaladie::route('/{record}/edit'),
         ];
-    }    
+    }
 }

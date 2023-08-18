@@ -22,9 +22,8 @@ return new class extends Migration
             $table->string('responsable');
             $table->string('image');
             $table->string('statut');
-            $table->unsignedBigInteger('id_acteur'); // Si vous avez une relation avec le modèle Acteur
-            $table->foreign('id_acteur')->references('id')->on('acteurs')->onDelete('cascade');
-
+            $table->unsignedBigInteger('id_centre_sante'); // Si vous avez une relation avec le modèle Centre_sante
+            $table->foreign('id_centre_sante')->references('id')->on('centre_santes')->onDelete('cascade');
             $table->timestamps();
         });
     }

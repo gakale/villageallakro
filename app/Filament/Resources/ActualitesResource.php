@@ -23,20 +23,26 @@ class ActualitesResource extends Resource
 {
     protected static ?string $model = Actualites::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationIcon = 'heroicon-o-book-open';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 TextInput::make('titre')->label('Titre')->required(),
-                TextInput::make('description')->label('Description')->required(),
-                Forms\Components\DatePicker::make('date')->label('Date')->required(),
-                TextInput::make('image')->label('Image')->required(),
+                Forms\Components\Card::make([
+                    Forms\Components\RichEditor::make('contenu')->label('Contenu')->required(),
+                ])->label('Contenu'),
+                Select::make('categorie')->label('Catégorie')->options([
+                    'Actualité' => 'Actualité',
+                    'Evénement' => 'Evénement',
+                ])->required(),
+                Forms\Components\DatePicker::make('date_publication')->label('Date')->required(),
+                Forms\Components\FileUpload::make('image')->label('Image')->required(),
+                Forms\Components\Hidden::make('statut')->default('approved')->required(),
                 Select::make('id_acteur')
                     ->label('Acteur')
-                    ->relationship('acteur', 'id_acteur')
-
+                    ->relationship('acteur', 'nom', )
                     ->required(),
             ]);
     }
@@ -46,10 +52,11 @@ class ActualitesResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('titre')->sortable()->searchable()->label('Titre'),
-                Tables\Columns\TextColumn::make('description')->sortable()->searchable()->label('Description'),
-                Tables\Columns\TextColumn::make('date')->sortable()->searchable()->label('Date'),
+                Tables\Columns\TextColumn::make('contenu')->searchable()->label('Contenu'),
+                Tables\Columns\TextColumn::make('date_publication')->sortable()->searchable()->label('Date'),
                 Tables\Columns\TextColumn::make('image')->sortable()->searchable()->label('Image'),
-                Tables\Columns\TextColumn::make('id_acteur')->sortable()->searchable()->label('Acteur'),
+                Tables\Columns\TextColumn::make('id')->sortable()->searchable()->label('Acteur'),
+                Tables\Columns\TextColumn::make('statut')->searchable()->label('Statut'),
             ])
             ->filters([
                 //

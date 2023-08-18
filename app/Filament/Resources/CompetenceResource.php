@@ -18,6 +18,7 @@ class CompetenceResource extends Resource
     protected static ?string $model = Competence::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationGroup = 'Gestion User';
 
     public static function form(Form $form): Form
     {
@@ -43,14 +44,14 @@ class CompetenceResource extends Resource
                 Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -58,5 +59,5 @@ class CompetenceResource extends Resource
             'create' => Pages\CreateCompetence::route('/create'),
             'edit' => Pages\EditCompetence::route('/{record}/edit'),
         ];
-    }    
+    }
 }

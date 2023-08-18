@@ -12,11 +12,9 @@ class ServiceSante extends Model
     use HasFactory;
 
 protected $fillable = [
-        'nom',
-        'adresse',
-        'telephone',
-        'email',
-        'description',
+       'nom',
+         'description',
+            'cout',
     ];
 
     public function CentreSante(): belongsToMany

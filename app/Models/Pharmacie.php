@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use App\Models\CentreSante;
 use App\Models\PeriodeGarde;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-
+use App\Models\Acteur;
 class Pharmacie extends Model
 {
     use HasFactory;
@@ -25,13 +25,14 @@ class Pharmacie extends Model
         'id_centre_sante',
     ];
 
-    public function CentreSante():belongsTo
+    public function centresante():belongsTo
     {
         return $this->belongsTo(CentreSante::class);
     }
 
-    public function PeriodeGarde():hasMany
+    public function periodegarde():hasMany
     {
         return $this->hasMany(PeriodeGarde::class);
     }
+
 }

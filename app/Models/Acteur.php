@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Actualites;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -17,7 +18,6 @@ use App\Models\Opportunite;
 use App\Models\Artisanale;
 use App\Models\PromotionArtisanale;
 use App\Models\Evenement_vie;
-use App\Models\Actualites;
 use App\Models\Maladie;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -96,7 +96,7 @@ class Acteur extends Model
         return $this->hasMany(Evenement_vie::class);
     }
 
-    public function actualite(): HasMany
+    public function actualites(): HasMany
     {
         return $this->hasMany(Actualites::class);
     }

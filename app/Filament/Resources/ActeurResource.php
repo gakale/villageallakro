@@ -20,7 +20,7 @@ class ActeurResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-user-group';
 
-
+    protected static ?string $navigationGroup = 'Gestion User';
     public static function form(Form $form): Form
     {
         return $form
@@ -45,7 +45,7 @@ class ActeurResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('id_acteur')->sortable()->searchable()->label('ID'),
+                Tables\Columns\TextColumn::make('id')->sortable()->searchable()->label('ID'),
                 Tables\Columns\TextColumn::make('nom')->sortable()->searchable()->label('Nom de l\'acteur'),
                 Tables\Columns\TextColumn::make('prenom')->label('Prénom de l\'acteur'),
                 Tables\Columns\TextColumn::make('sexe')->label('Sexe'),
@@ -63,6 +63,7 @@ class ActeurResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
+                Tables\Actions\ViewAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
@@ -81,6 +82,7 @@ class ActeurResource extends Resource
         return [
             'index' => Pages\ListActeurs::route('/'),
             'create' => Pages\CreateActeur::route('/create'),
+            'view' => Pages\ViewActeur::route('/{record}'),
             'edit' => Pages\EditActeur::route('/{record}/edit'),
         ];
     }

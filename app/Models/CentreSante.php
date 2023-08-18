@@ -25,7 +25,7 @@ class CentreSante extends Model
         return $this->belongsToMany(ServiceSante::class, 'services_centres');
     }
 
-    public function Pharmacie():hasMany
+    public function pharmacie():hasMany
     {
         return $this->hasMany(Pharmacie::class);
     }
