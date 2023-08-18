@@ -12,10 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('demenagements', function (Blueprint $table) {
-            $table->id('id_demenagement');
-            $table->unsignedBigInteger('id_acteur');
+            $table->id();
             $table->text('info');
-            $table->foreign('id_acteur')->references('id_acteur')->on('acteurs')->onDelete('cascade');
+            $table->unsignedBigInteger('id_acteur'); // Si vous avez une relation avec le modèle Acteur
+            $table->foreign('id_acteur')->references('id')->on('acteurs')->onDelete('cascade');
             $table->timestamps();
         });
     }

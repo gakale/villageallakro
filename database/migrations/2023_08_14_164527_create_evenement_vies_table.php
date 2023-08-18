@@ -18,8 +18,8 @@ return new class extends Migration
             $table->date('Date');
             $table->string('lieu');
             $table->string('statut');
-            $table->unsignedBigInteger('id_acteur');
-            $table->foreign('id_acteur')->references('id_acteur')->on('acteurs');
+            $table->unsignedBigInteger('id_acteur'); // Si vous avez une relation avec le modèle Acteur
+            $table->foreign('id_acteur')->references('id')->on('acteurs')->onDelete('cascade');
             $table->timestamps();
         });
     }

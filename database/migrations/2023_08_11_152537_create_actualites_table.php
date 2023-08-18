@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('statut');
             $table->date('date_publication');
             $table->string('categorie');
-            $table->unsignedBigInteger('id_acteur');
-            $table->foreign('id')->references('id_acteur')->on('acteurs');
+            $table->unsignedBigInteger('id_acteur'); // Si vous avez une relation avec le modèle Acteur
+            $table->foreign('id_acteur')->references('id')->on('acteurs')->onDelete('cascade');
             $table->timestamps();
         });
     }

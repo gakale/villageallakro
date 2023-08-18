@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pharmacies', function (Blueprint $table) {
-            $table->id('id_pharmacie');
+            $table->id();
             $table->string('nom');
             $table->string('adresse');
             $table->string('telephone');
@@ -22,10 +22,8 @@ return new class extends Migration
             $table->string('responsable');
             $table->string('image');
             $table->string('statut');
-
-            $table->unsignedBigInteger('id_centre_sante');
-            $table->foreign('id_centre_sante')->references('id_centre_sante')->on('centre_santes')->onDelete('cascade')->onUpdate('cascade');
-
+            $table->unsignedBigInteger('id_acteur'); // Si vous avez une relation avec le modèle Acteur
+            $table->foreign('id_acteur')->references('id')->on('acteurs')->onDelete('cascade');
 
             $table->timestamps();
         });

@@ -21,7 +21,8 @@ return new class extends Migration
             $table->string('date_debut');
             $table->string('date_fin');
             $table->unsignedBigInteger('id_acteur'); // Si vous avez une relation avec le modèle Acteur
-            $table->foreign('id_acteur')->references('id_acteur')->on('acteurs')->onDelete('cascade');            $table->timestamps();
+            $table->foreign('id_acteur')->references('id')->on('acteurs')->onDelete('cascade');
+           $table->timestamps();
         });
     }
 

@@ -12,13 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('opportunites', function (Blueprint $table) {
-            $table->id('id_opportunite');
+            $table->id();
             $table->string('type_opportunite');
             $table->string('description');
             $table->string('date_disponibilite');
             $table->integer('prix');
-            $table->unsignedBigInteger('id_acteur');
-            $table->foreign('id_acteur')->references('id_acteur')->on('acteurs');
+            $table->unsignedBigInteger('id_acteur'); // Si vous avez une relation avec le modèle Acteur
+            $table->foreign('id_acteur')->references('id')->on('acteurs')->onDelete('cascade');
             $table->string('localisation');
             $table->string('etat');
             $table->string('photo');
