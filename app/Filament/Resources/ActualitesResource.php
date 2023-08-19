@@ -14,8 +14,6 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Select;
-use Filament\Resources\RelationManagers\RelationManager;
-use Filament\Resources\RelationManagers\RelationManager as RelationManagerAlias;
 use Filament\Forms\Components\MultiSelect;
 use Filament\Forms\Components\BelongsToPicker;
 
@@ -33,13 +31,16 @@ class ActualitesResource extends Resource
                 Forms\Components\Card::make([
                     Forms\Components\RichEditor::make('contenu')->label('Contenu')->required(),
                 ])->label('Contenu'),
+                Forms\Components\FileUpload::make('image')->label('Image')->required()
+                    ->image()
+                    ->acceptedFileTypes(['image/*'])
+                    ->directory('actualites'),
                 Select::make('categorie')->label('Catégorie')->options([
                     'Actualité' => 'Actualité',
                     'Evénement' => 'Evénement',
                 ])->required(),
                 Forms\Components\DatePicker::make('date_publication')->label('Date')->required(),
-                Forms\Components\FileUpload::make('image')->label('Image')->required(),
-                Forms\Components\Hidden::make('statut')->default('approved')->required(),
+                Forms\Components\TextInput::make('status')->label('Status')->required(),
                 Select::make('id_acteur')
                     ->label('Acteur')
                     ->relationship('acteur', 'nom', )

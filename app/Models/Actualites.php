@@ -13,7 +13,10 @@ class Actualites extends Model
         'description',
         'date',
         'image',
+        'categorie',
+        'status',
         'id_acteur',
+        'contenu',
     ];
 
     public function acteur()

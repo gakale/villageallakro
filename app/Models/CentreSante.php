@@ -4,9 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use App\Models\ServiceSante;
 use App\Models\Pharmacie;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 class CentreSante extends Model
 {
@@ -18,12 +19,14 @@ class CentreSante extends Model
         'telephone',
         'email',
         'description',
+        'id_service_sante',
    ];
 
-    public function ServiceSante(): belongsToMany
+    public function servicesante(): HasMany
     {
-        return $this->belongsToMany(ServiceSante::class, 'services_centres');
+        return $this->hasMany(ServiceSante::class, 'id_service_sante');
     }
+
 
     public function pharmacie():hasMany
     {

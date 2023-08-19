@@ -30,11 +30,8 @@ class CentreSanteResource extends Resource
                 Forms\Components\TextInput::make('email')->label('Email')->required()->email(),
                 Forms\Components\TextInput::make('description')->label('Description')->required(),
                 Forms\Components\Select::make('id_service_sante')
-                    ->multiple()
+                    ->relationship('servicesante', 'nom')
                     ->label('Service de santé')
-                    ->options(
-                        \App\Models\ServiceSante::all()->pluck('nom', 'id')
-                    )->relationship('ServiceSante', 'nom')
                     ->required(),
             ]);
     }

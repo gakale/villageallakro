@@ -50,6 +50,7 @@ class ServiceSanteResource extends Resource
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
+
             ]);
     }
 
