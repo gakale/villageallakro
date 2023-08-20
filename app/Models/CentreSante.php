@@ -19,13 +19,9 @@ class CentreSante extends Model
         'telephone',
         'email',
         'description',
-        'id_service_sante',
+        'lesservices',
    ];
 
-    public function servicesante(): HasMany
-    {
-        return $this->hasMany(ServiceSante::class, 'id_service_sante');
-    }
 
 
     public function pharmacie():hasMany

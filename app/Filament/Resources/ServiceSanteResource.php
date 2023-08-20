@@ -6,6 +6,8 @@ use App\Filament\Resources\ServiceSanteResource\Pages;
 use App\Filament\Resources\ServiceSanteResource\RelationManagers;
 use App\Models\ServiceSante;
 use Filament\Forms;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
@@ -24,11 +26,18 @@ class ServiceSanteResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('nom')->label('Nom du service de santé')->required(),
-                Forms\Components\TextInput::make('description')->label('Description')->required(),
-                Forms\Components\TextInput::make('cout')
+                Forms\Components\Card::make([
+                TextInput::make('nom')->label('Nom du service de santé')->required(),
+                    Textarea::make('description')->label('Description')->required(),
+
+                ]),
+                Forms\Components\Card::make([
+                TextInput::make('cout')
                     ->label('Prix du service')
                     ->numeric()->required(),
+
+                ])
+
             ]);
     }
 

@@ -11,12 +11,13 @@ class Actualites extends Model
     protected $fillable = [
         'titre',
         'description',
-        'date',
+        'date_publication',
         'image',
         'categorie',
-        'status',
-        'id_acteur',
+        'statut',
+        'acteur_id',
         'contenu',
+
     ];
 
     public function acteur()

@@ -28,7 +28,7 @@
 
     <style>
     .background {
-        background-image: url('{{ asset('img/footer.jpg') }}');
+        background-image: url({{ asset('img/footer.jpg') }}');
         /* Add other background properties as needed */
         background-repeat: no-repeat;
         background-size: cover;
@@ -111,8 +111,8 @@
             <p class="momo7">FLASH&nbsp;INFO</p>
             <p class="momo6">
                 <marquee behavior="scroll" direction="left">
-                    <span class="momo9">INFO</span> PROROGATION DE LA DATE LIMITE DE DEPOT DES ETATS FINANCIERS AU TITRE DE L'EXERCICE CLOS AU 31 DECEMBRE 2022 ( Voir le communiqué du 27/06/2023). 
-                    <span class="momo9">INFO</span> ENQUETES FONCIERES ( Propriétaires de terrains nus, bâtiments, maisons, appartements et magasins du District autonome d’Abidjan ) ( Voir le communiqué du 13/06/2023). 
+                    <span class="momo9">INFO</span> PROROGATION DE LA DATE LIMITE DE DEPOT DES ETATS FINANCIERS AU TITRE DE L'EXERCICE CLOS AU 31 DECEMBRE 2022 ( Voir le communiqué du 27/06/2023).
+                    <span class="momo9">INFO</span> ENQUETES FONCIERES ( Propriétaires de terrains nus, bâtiments, maisons, appartements et magasins du District autonome d’Abidjan ) ( Voir le communiqué du 13/06/2023).
                     <span class="momo9">INFO</span> Prix d'excellence de la DGI: Célébration de la 21ème édition le 19 Juillet 2023 au Palais des congrès Sofitel Abidjan Hôtel Ivoire à 17H 00.
                     <span class="momo9">INFO</span> Premier trimestre 2023 : Objectifs 790,9 Milliards => Recettes mobilisées : 810,9 Milliards (Ecart positif : +14 Milliards – Taux de recouvrement : 102%).
                 </marquee>
