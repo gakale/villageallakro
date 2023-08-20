@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 
-<title>Allakro Village &amp; Le village au beau milieu d'Abidjan</title>
+<title>Allakro Village - Le village au beau milieu d'Abidjan</title>
 
 <link rel="icon" href="{{ asset('img/core-img/favicon.ico') }}">
 
