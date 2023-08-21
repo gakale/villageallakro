@@ -91,7 +91,7 @@ class Acteur extends Model
         return $this->hasMany(PromotionArtisanale::class);
     }
 
-    public function evenement_vie() : HasMany
+    public function EvenementVie() : HasMany
     {
         return $this->hasMany(Evenement_vie::class);
     }
