@@ -19,9 +19,5 @@ protected $fillable = [
             'cout',
     ];
 
-    public function centresante(): belongsTo
-    {
-        return $this->belongsTo(CentreSante::class , 'id_service_sante'  );
-    }
 
 }

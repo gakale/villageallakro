@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('acteurs_maladies', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_acteur'); // Si vous avez une relation avec le modèle Acteur
-            $table->foreign('id_acteur')->references('id')->on('acteurs')->onDelete('cascade');
+            $table->unsignedBigInteger('acteur_id'); // Si vous avez une relation avec le modèle Acteur
+            $table->foreign('acteur_id')->references('id')->on('acteurs')->onDelete('cascade');
             $table->unsignedBigInteger('id_maladies');
             $table->foreign('id_maladies')->references('id')->on('maladies')->onDelete('cascade');
             $table->string('statut');

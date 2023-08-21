@@ -16,6 +16,8 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\MultiSelect;
 use Filament\Forms\Components\BelongsToPicker;
+use Filament\Tables\Columns\TextColumn;
+
 
 class ActualitesResource extends Resource
 {
@@ -28,9 +30,6 @@ class ActualitesResource extends Resource
         return $form
             ->schema([
                 TextInput::make('titre')->label('Titre')->required(),
-                Forms\Components\Card::make([
-                    Forms\Components\RichEditor::make('contenu')->label('Contenu')->required(),
-                ])->label('Contenu'),
                 Forms\Components\FileUpload::make('image')->label('Image')->required()
                     ->image()
                     ->acceptedFileTypes(['image/*'])
@@ -40,11 +39,14 @@ class ActualitesResource extends Resource
                     'Evénement' => 'Evénement',
                 ])->required(),
                 Forms\Components\DatePicker::make('date_publication')->label('Date')->required(),
-                Forms\Components\TextInput::make('status')->label('Status')->required(),
-                Select::make('id_acteur')
+                Forms\Components\TextInput::make('statut')->label('Status')->required(),
+                Select::make('acteur_id')
                     ->label('Acteur')
                     ->relationship('acteur', 'nom', )
                     ->required(),
+                Forms\Components\Card::make([
+                    Forms\Components\RichEditor::make('contenu')->label('Contenu')->required(),
+                ])->label('Contenu'),
             ]);
     }
 
@@ -52,12 +54,12 @@ class ActualitesResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('titre')->sortable()->searchable()->label('Titre'),
-                Tables\Columns\TextColumn::make('contenu')->searchable()->label('Contenu'),
-                Tables\Columns\TextColumn::make('date_publication')->sortable()->searchable()->label('Date'),
-                Tables\Columns\TextColumn::make('image')->sortable()->searchable()->label('Image'),
-                Tables\Columns\TextColumn::make('id')->sortable()->searchable()->label('Acteur'),
-                Tables\Columns\TextColumn::make('statut')->searchable()->label('Statut'),
+                TextColumn::make('titre')->sortable()->searchable()->label('Titre'),
+                TextColumn::make('date_publication')->sortable()->searchable()->label('Date de publication'),
+                TextColumn::make('image')->sortable()->searchable()->label('Image'),
+                TextColumn::make('acteur.nom')->sortable()->searchable()->label('Auteurs'),
+                TextColumn::make('statut')
+                   ->label('Statut'),
             ])
             ->filters([
                 //

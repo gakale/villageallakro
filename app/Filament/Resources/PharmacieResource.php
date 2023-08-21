@@ -6,6 +6,8 @@ use App\Filament\Resources\PharmacieResource\Pages;
 use App\Filament\Resources\PharmacieResource\RelationManagers;
 use App\Models\Pharmacie;
 use Filament\Forms;
+use Filament\Forms\Components\DateTimePicker;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
@@ -14,6 +16,8 @@ use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Components\TextInput;
+use Filament\Tables\Columns\SelectColumn;
+
 class PharmacieResource extends Resource
 {
     protected static ?string $model = Pharmacie::class;
@@ -29,10 +33,17 @@ class PharmacieResource extends Resource
                 TextInput::make('adresse')->label('Adresse')->required(),
                 TextInput::make('telephone')->label('Téléphone')->required()->tel(), // Ajout de la méthode tel()
                 TextInput::make('email')->label('Email')->required()->email(),
-                Forms\Components\DateTimePicker::make('horaire_ouverture')->label('Horaire D\'ouverture')->required(),
-                Forms\Components\DateTimePicker::make('horaire_fermeture')->label('Horaire de fermeture')->required(),
-                Forms\Components\FileUpload::make('image')->label('Image de la pharmacie')->image()->directory('pharmacies')->required(),
+                DateTimePicker::make('horaire_ouverture')->label('Horaire D\'ouverture')->required(),
+                DateTimePicker::make('horaire_fermeture')->label('Horaire de fermeture')->required(),
+                FileUpload::make('image')->label('Image de la pharmacie')->image()->directory('pharmacies')->required(),
                 TextInput::make('responsable')->label('Responsable de la pharmacie')->required(),
+                Select::make('statut')
+                    ->options([
+                        'draft' => 'Draft',
+                        'reviewing' => 'Reviewing',
+                        'published' => 'Published',
+                    ])
+                    ->rules(['required']),
                 Select::make('id_centre_sante')
                     ->label('Centre de santé')
                     ->relationship('CentreSante', 'nom')
@@ -53,6 +64,8 @@ class PharmacieResource extends Resource
                 Tables\Columns\TextColumn::make('horaire_fermeture')->label('Horaire de fermeture'),
                 Tables\Columns\TextColumn::make('image')->label('Image de la pharmacie'),
                 Tables\Columns\TextColumn::make('responsable')->label('Responsable de la pharmacie'),
+                Tables\Columns\TextColumn::make('statut')->label('Statut'),
+                Tables\Columns\TextColumn::make('centresante.nom')->label('Centre de santé'),
             ])
             ->filters([
                 //

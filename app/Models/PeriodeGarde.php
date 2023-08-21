@@ -16,6 +16,11 @@ class PeriodeGarde extends Model
         'statut',
     ];
 
+    
+    protected $casts = [
+        'jour' => 'array',
+    ];
+
     public function Pharmacie(): BelongsTo
     {
         return $this->belongsTo(Pharmacie::class);

@@ -18,8 +18,7 @@ return new class extends Migration
             $table->string('adresse');
             $table->string('telephone');
             $table->string('email');
-            $table->unsignedBigInteger('id_service_sante');
-            $table->foreign('id_service_sante')->references('id')->on('service_santes');
+            $table->text('lesservices');
             $table->timestamps();
         });
     }

@@ -18,8 +18,8 @@ return new class extends Migration
             $table->date('date_creation');
             $table->string('site_web');
             $table->string('objectif');
-            $table->unsignedBigInteger('id_acteur'); // Si vous avez une relation avec le modèle Acteur
-            $table->foreign('id_acteur')->references('id')->on('acteurs')->onDelete('cascade');
+            $table->unsignedBigInteger('acteur_id'); // Si vous avez une relation avec le modèle Acteur
+            $table->foreign('acteur_id')->references('id')->on('acteurs')->onDelete('cascade');
             $table->text('evenement');
             $table->string('statut');
 

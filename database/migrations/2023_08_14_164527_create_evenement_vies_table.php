@@ -12,14 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('evenement_vies', function (Blueprint $table) {
-            $table->id('id_evenement_vie');
+            $table->id();
             $table->string('type');
             $table->string('description');
             $table->date('Date');
             $table->string('lieu');
             $table->string('statut');
-            $table->unsignedBigInteger('id_acteur'); // Si vous avez une relation avec le modèle Acteur
-            $table->foreign('id_acteur')->references('id')->on('acteurs')->onDelete('cascade');
+            $table->unsignedBigInteger('acteur_id'); // Si vous avez une relation avec le modèle Acteur
+            $table->foreign('acteur_id')->references('id')->on('acteurs')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -23,7 +23,38 @@ class EvenementVieResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\Select::make('type')
+                    ->label('Evenement Vie')
+                    ->placeholder('Choisir un evenement vie')
+                    ->options([
+                        'naissance' => 'Naissance',
+                        'decès' => 'Décès',
+                        'mariage' => 'Mariage',
+                    ])
+                    ->required(),
+                Forms\Components\Card::make([
+                Forms\Components\Textarea::make('description')
+                    ->label('Description')
+                    ->required(),
+                ]),
+                Forms\Components\DatePicker::make('Date'),
+                Forms\Components\TextInput::make('lieu')
+                    ->label('Lieu')
+                    ->required(),
+                Forms\Components\Select::make('statut')->label('Statut')
+                    ->placeholder('Choisir un statut')
+                    ->options([
+                        'draft' => 'Draft',
+                        'approved' => 'Approved',
+                    ])
+                    ->required(),
+
+                Forms\Components\Select::make('acteur_id')
+                    ->label('Acteur concerné')
+                    ->placeholder('Choisir une personne')
+                    ->relationship('acteur', 'nom'),
+
+
             ]);
     }
 
@@ -31,7 +62,31 @@ class EvenementVieResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextInputColumn::make('type')
+                    ->label('Evenement Vie')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('description')
+                    ->label('Description')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('Date')
+                    ->label('Date')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('lieu')
+                    ->label('Lieu')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('statut')
+                    ->label('Statut')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('acteur_id')
+
+                    ->label('Acteur concerné')
+                    ->searchable()
+                    ->sortable(),
             ])
             ->filters([
                 //
@@ -43,14 +98,14 @@ class EvenementVieResource extends Resource
                 Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -58,5 +113,5 @@ class EvenementVieResource extends Resource
             'create' => Pages\CreateEvenementVie::route('/create'),
             'edit' => Pages\EditEvenementVie::route('/{record}/edit'),
         ];
-    }    
+    }
 }
