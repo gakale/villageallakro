@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Acteur;
+use App\Models\OffreEmploi;
 use Illuminate\Http\Request;
 
 class Offres_emploiController extends Controller
@@ -11,7 +13,8 @@ class Offres_emploiController extends Controller
      */
     public function index()
     {
-        //
+        $offre_emplois = OffreEmploi::paginate(10); // 10 est le nombre d'offres par page, vous pouvez le changer
+        return view('offredemploi.index', ['offre_emplois' => OffreEmploi::all()]);
     }
 
     /**
@@ -19,7 +22,8 @@ class Offres_emploiController extends Controller
      */
     public function create()
     {
-        //
+        $acteurs = Acteur::all();
+        return view('offred_emplois.create', ['acteurs' => $acteurs]);
     }
 
     /**
@@ -27,7 +31,20 @@ class Offres_emploiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'titre' => 'required|string|max:255',
+            'description' => 'required|string',
+            'lieu' => 'required|string|max:255',
+            'type_contrat' => 'nullable|string|max:255',
+            'salaire' => 'required|string|max:255',
+            'date_debut' => 'required|date',
+            'date_fin' => 'required|date',
+            'acteur_id' => 'required|exists:acteurs,id',
+        ]);
+
+        OffreEmploi::create($data);
+
+        return redirect()->route('offre_emplois.create')->with('success', 'Offre d\'emploi créée avec succès!');
     }
 
     /**

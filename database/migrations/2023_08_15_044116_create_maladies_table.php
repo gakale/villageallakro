@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('statut');
             $table->date('date_debut');
             $table->date('date_fin');
-            $table->unsignedBigInteger('id_epidemie');
-            $table->foreign('id_epidemie')->references('id')->on('epidemies');
+            $table->unsignedBigInteger('epidemie_id');
+            $table->foreign('epidemie_id')->references('id')->on('epidemies');
             $table->timestamps();
         });
     }

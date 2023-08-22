@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('acteur_id'); // Si vous avez une relation avec le modèle Acteur
             $table->foreign('acteur_id')->references('id')->on('acteurs')->onDelete('cascade');
-            $table->unsignedBigInteger('id_maladies');
-            $table->foreign('id_maladies')->references('id')->on('maladies')->onDelete('cascade');
+            $table->unsignedBigInteger('maladies_id');
+            $table->foreign('maladies_id')->references('id')->on('maladies')->onDelete('cascade');
             $table->string('statut');
             $table->timestamps();
         });

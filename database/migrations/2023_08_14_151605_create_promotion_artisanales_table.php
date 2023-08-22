@@ -21,10 +21,10 @@ return new class extends Migration
             $table->string('etat');
             $table->string('photo');
             $table->string('statut');
-            $table->unsignedBigInteger('id_artisanales');
-            $table->foreign('id_artisanales')->references('id')->on('artisanales');
-            $table->unsignedBigInteger('id_acteur'); // Si vous avez une relation avec le modèle Acteur
-            $table->foreign('id_acteur')->references('id')->on('acteurs')->onDelete('cascade');
+            $table->unsignedBigInteger('artisanales_id');
+            $table->foreign('artisanales_id')->references('id')->on('artisanales');
+            $table->unsignedBigInteger('acteur_id'); // Si vous avez une relation avec le modèle Acteur
+            $table->foreign('acteur_id')->references('id')->on('acteurs')->onDelete('cascade');
             $table->string('redution');
             $table->timestamps();
         });

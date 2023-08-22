@@ -1,28 +1,35 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8" />
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@yield('title', 'Mon Application Laravel')</title>
 
-        <meta name="application-name" content="{{ config('app.name') }}" />
-        <meta name="csrf-token" content="{{ csrf_token() }}" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Styles CSS (vous pouvez ajouter vos propres liens vers des fichiers CSS ici) -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
+</head>
+<body>
 
-        <title>{{ config('app.name') }}</title>
+<!-- En-tête de l'application -->
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="{{ url('/') }}">Mon Application</a>
+        <!-- Ajoutez d'autres liens de navigation si nécessaire -->
+    </nav>
+</header>
 
-        <style>
-            [x-cloak] {
-                display: none !important;
-            }
-        </style>
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-        @livewireStyles
-        @livewireScripts
-        @stack('scripts')
-    </head>
+<!-- Contenu principal -->
+<main class="container mt-4">
+    @yield('content')
+</main>
 
-    <body class="antialiased">
-        {{ $slot }}
+<!-- Pied de page -->
+<footer class="mt-4">
+    <p class="text-center">&copy; {{ date('Y') }} Mon Application Laravel. Tous droits réservés.</p>
+</footer>
 
-        @livewire('notifications')
-    </body>
+<!-- Scripts JS (vous pouvez ajouter vos propres scripts ici) -->
+<script src="{{ asset('js/app.js') }}"></script>
+</body>
 </html>

@@ -61,9 +61,9 @@
               <li class="nav-item dropdown head5">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" href="#"><span class="head6">Offre d'emploi</span></a>
                 <ul class="dropdown-menu head7">
-                    <li><a class="dropdown-item" href="{{ route('offredemploi/offres') }}"><span class="head8">Voir les offres</span></a></li>
-                    <li><a class="dropdown-item" href="{{ route('offredemploi/profils') }}"><span class="head8">Voir les profils</span></a></li>
-                    <li><a class="dropdown-item" href="{{ route('offredemploi/nouvelleoffre-demande') }}"><span class="head8">Nouvelle offre/demande</span></a></li>
+                    <li><a class="dropdown-item" href="{{ route('offre_emplois.index') }}"><span class="head8">Voir les offres</span></a></li>
+                    <li><a class="dropdown-item" href="#"><span class="head8">Voir les profils</span></a></li>
+                    <li><a class="dropdown-item" href="{{ route('offre_emplois.create') }}"><span class="head8">Nouvelle offre/demande</span></a></li>
                     </ul>
               </li>
               <li class="nav-item dropdown head5">
