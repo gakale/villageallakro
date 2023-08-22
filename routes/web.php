@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Offres_emploiController;
+use App\Http\Controllers\PharmaciesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -64,14 +65,7 @@ Route::get('/offre_emplois.show', [\App\Http\Controllers\Offres_emploiController
 Route::post('/offre_emplois.store', [\App\Http\Controllers\Offres_emploiController::class,'store'])->name('offre_emplois.store');
 
 
-
-Route::get('/nouvelleoffre-demande', function () {
-    return view('offredemploi/nouvelleoffre-demande');
-})->name('offredemploi/nouvelleoffre-demande');
-
-Route::get('/pharmacie', function () {
-    return view('espacesante/pharmacie');
-})->name('espacesante/pharmacie');
+Route::get('/pharmacie', [\App\Http\Controllers\PharmaciesController::class,'index'])->name('pharmacie');
 
 Route::get('/espacesante', function () {
     return view('espacesante/espacesante');

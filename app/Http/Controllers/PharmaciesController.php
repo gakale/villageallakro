@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pharmacie;
 use Illuminate\Http\Request;
 
 class PharmaciesController extends Controller
@@ -11,7 +12,8 @@ class PharmaciesController extends Controller
      */
     public function index()
     {
-        //
+        $pharmacies = Pharmacie::paginate(10); // 10 est le nombre de pharmacies par page, vous pouvez le changer
+    return view('espacesante.pharmacie', ['pharmacies' => Pharmacie::all()]);
     }
 
     /**

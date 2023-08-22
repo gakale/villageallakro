@@ -9,14 +9,14 @@ class PeriodeGarde extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'id_pharmacie',
+        'pharmacie_id',
         'jour',
         'heure_debut',
         'heure_fin',
         'statut',
     ];
 
-    
+
     protected $casts = [
         'jour' => 'array',
     ];
