@@ -23,7 +23,7 @@ class Offres_emploiController extends Controller
     public function create()
     {
         $acteurs = Acteur::all();
-        return view('offred_emplois.create', ['acteurs' => $acteurs]);
+        return view('offredemploi.create', ['acteurs' => $acteurs]);
     }
 
     /**
