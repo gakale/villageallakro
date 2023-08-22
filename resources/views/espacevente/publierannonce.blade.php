@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 
-<title>Allakro Village - Le village au beau milieu d'Abidjan</title>
+<title>Publier annonce - Le village au beau milieu d'Abidjan</title>
 
 <link rel="icon" href="{{ asset('img/core-img/favicon.ico') }}">
 
@@ -28,7 +28,7 @@
     </div>
     @endif
 
-    <h2>Créer une nouvelle offre d'emploi</h2>
+    <h2>Publier une nouvelle annonce</h2>
 
     <form action="{{route('offre_emplois.store')}}" method="post">
         @csrf
@@ -44,18 +44,32 @@
         </div>
 
         <div class="form-group">
-            <label for="lieu">Lieu</label>
+            <label for="lieu">Localisation</label>
             <input type="text" class="form-control" id="lieu" name="lieu" required>
         </div>
 
         <div class="form-group">
-            <label for="type_contrat">Type de contrat</label>
-            <input type="text" class="form-control" id="type_contrat" name="type_contrat">
+            <label for="prix">Prix</label>
+            <input type="text" class="form-control" id="prix" name="prix" required>
         </div>
 
         <div class="form-group">
-            <label for="salaire">Salaire</label>
-            <input type="text" class="form-control" id="salaire" name="salaire" required>
+            <label for="photo">Photo</label>
+            <input type="text" class="form-control" id="photo" name="photo">
+        </div>
+
+        <div class="form-group">
+            <label for="categorie">Catégorie</label>
+            <select class="form-control" id="categorie" name="categorie" required>
+                @foreach($acteurs as $acteur)
+                <option value="{{ $acteur->id }}">{{ $acteur->nom }}</option>
+                @endforeach
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="contact">Contact</label>
+            <input type="text" class="form-control" id="contact" name="contact">
         </div>
 
         <div class="form-group">
@@ -69,7 +83,7 @@
         </div>
 
         <div class="form-group">
-            <label for="acteur_id">Qui offre l'emploie</label>
+            <label for="acteur_id">Qui publie l'annonce</label>
             <select class="form-control" id="acteur_id" name="acteur_id" required>
                 @foreach($acteurs as $acteur)
                 <option value="{{ $acteur->id }}">{{ $acteur->nom }}</option>

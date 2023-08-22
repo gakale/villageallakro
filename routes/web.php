@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Offres_emploiController;
+use App\Http\Controllers\VenteController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -63,6 +65,14 @@ Route::get('/offre_emplois.show', [\App\Http\Controllers\Offres_emploiController
 // store
 Route::post('/offre_emplois.store', [\App\Http\Controllers\Offres_emploiController::class,'store'])->name('offre_emplois.store');
 
+Route::get('/espacevente.publierannonce', [\App\Http\Controllers\VenteController::class,'create'])->name('espacevente.publierannonce');
+Route::get('/espacevente.voirannonce', [\App\Http\Controllers\VenteController::class,'index'])->name('espacevente.voirannonce');
+Route::get('/espacevente.publierannonce', [\App\Http\Controllers\VenteController::class,'show'])->name('espacevente.publierannonce');
+
+
+Route::get('/actualite', function () {
+    return view('actualite/actualite');
+})->name('actualite/actualite');
 
 
 Route::get('/nouvelleoffre-demande', function () {
