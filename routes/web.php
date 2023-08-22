@@ -70,6 +70,15 @@ Route::get('/espacevente.voirannonce', [\App\Http\Controllers\VenteController::c
 Route::get('/espacevente.publierannonce', [\App\Http\Controllers\VenteController::class,'show'])->name('espacevente.publierannonce');
 
 
+Route::get('/espacemembre.create', [\App\Http\Controllers\VenteController::class,'create'])->name('espacemembre.create');
+Route::get('/espacemembre.index', [\App\Http\Controllers\VenteController::class,'index'])->name('espacemembre.index');
+Route::get('/espacemembre.show', [\App\Http\Controllers\VenteController::class,'show'])->name('espacemembre.show');
+
+Route::post('/espacemembre.store', [\App\Http\Controllers\VenteController::class,'store'])->name('espacemembre.store');
+
+
+
+
 Route::get('/actualite', function () {
     return view('actualite/actualite');
 })->name('actualite/actualite');

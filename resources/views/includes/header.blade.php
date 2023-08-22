@@ -17,6 +17,7 @@
             <div class="container">
                 <div class="col-sm-12 col-md-12 col-lg-12 head1">
                     <a href="#">20531 visiteurs <img src="{{ asset('img/467965-removebg-preview (2).png') }}" alt="logo_visibilité" style="width: 30px;"></a>
+                    <a href="{{ route('espacemembre.index') }}">Espace Membre </a>
                     <a href="{{ route('filament.pages.dashboard') }}">Espace Admin <img src="{{ asset('img/logo_messagerie.png') }}" alt="logo_messagerie" style="width: 25px;"></a>
                 </div>
             </div>
