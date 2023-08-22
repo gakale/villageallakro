@@ -15,8 +15,10 @@ class VenteController extends Controller
      */
     public function index()
     {
-        $ventes = Artisanale::paginate(10); // 10 est le nombre d'offres par page, vous pouvez le changer
-        return view('espacevente.voirannonce', ['ventes' => Artisanale::all()]);
+        // je doit recupéré uniquement ceux qui sont en vente
+
+         $ventes = Artisanale::where('statut', 'en vente')->get();
+        return view('espacevente.voirannonce', ['ventes' => $ventes]);
     }
 
     /**
@@ -25,7 +27,7 @@ class VenteController extends Controller
     public function create()
     {
         $acteurs = Acteur::all();
-        return view('espacevente.voirannonce', ['acteurs' => $acteurs]);
+        return view('espacevente.publierannonce', ['acteurs' => $acteurs]);
     }
 
     /**
@@ -33,23 +35,46 @@ class VenteController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->validate([
-            'titre' => 'required|string|max:255',
+
+        // Valider les données du formulaire
+        $request->validate([
+            'nom' => 'required|string|max:255',
             'description' => 'required|string',
-            'lieu' => 'required|string|max:255',
-            'prix' => 'required|string|max:255',
-            'photo' => 'required|string|max:255',
+            'prix' => 'required|integer',
             'categorie' => 'required|string|max:255',
-            'contact' => 'required|string|max:255',
-            'date_debut' => 'required|date',
-            'date_fin' => 'required|date',
+            'collection' => 'nullable|string|max:255',
+            'etat' => 'nullable|string|max:255',
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'statut' => 'nullable|string|max:255',
             'acteur_id' => 'required|exists:acteurs,id',
         ]);
 
-        OffreEmploi::create($data);
+        // Télécharger l'image si elle est fournie
+        if ($request->hasFile('photo')) {
+            $imageName = time() . '.' . $request->photo->extension();
+            $request->photo->storeAs('images', $imageName);
+        }
 
-        return redirect()->route('espacevente.voirannonce')->with('success', 'Offre d\'emploi créée avec succès!');
-    }
+        // Créer une nouvelle entrée dans la base de données
+        $artisanale = new Artisanale;
+        $artisanale->nom = $request->nom;
+        $artisanale->description = $request->description;
+        $artisanale->prix = $request->prix;
+        $artisanale->categorie = $request->categorie;
+        $artisanale->collection = $request->collection;
+        $artisanale->etat = $request->etat;
+        $artisanale->photo = isset($imageName) ? 'images/' . $imageName : null;
+        $artisanale->statut = $request->statut;
+        $artisanale->acteur_id = $request->acteur_id;
+        $artisanale->save();
+
+        // Rediriger vers une page avec un message de succès
+        return redirect()->route('voireannonce.create')->with('success', 'Annonce artisanale créée avec succès!');
+
+
+
+
+}
 
     /**
      * Display the specified resource.

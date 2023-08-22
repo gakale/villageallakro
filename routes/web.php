@@ -65,9 +65,11 @@ Route::get('/offre_emplois.show', [\App\Http\Controllers\Offres_emploiController
 // store
 Route::post('/offre_emplois.store', [\App\Http\Controllers\Offres_emploiController::class,'store'])->name('offre_emplois.store');
 
-Route::get('/espacevente.publierannonce', [\App\Http\Controllers\VenteController::class,'create'])->name('espacevente.publierannonce');
-Route::get('/espacevente.voirannonce', [\App\Http\Controllers\VenteController::class,'index'])->name('espacevente.voirannonce');
-Route::get('/espacevente.publierannonce', [\App\Http\Controllers\VenteController::class,'show'])->name('espacevente.publierannonce');
+Route::get('/voireannonce', [\App\Http\Controllers\VenteController::class,'index'])->name('voireannonce');
+Route::get('/voireannonce.create', [\App\Http\Controllers\VenteController::class,'create'])->name('voireannonce.create');
+Route::get('/voireannonce.show', [\App\Http\Controllers\VenteController::class,'show'])->name('voireannonce.show');
+// store
+Route::post('/voireannonce.store', [\App\Http\Controllers\VenteController::class,'store'])->name('voireannonce.store');
 
 
 Route::get('/actualite', function () {

@@ -98,8 +98,8 @@
               <li class="nav-item dropdown head5">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" href="#"><span class="head6">Espace Vente</span></a>
                 <ul class="dropdown-menu head7">
-                    <li><a class="dropdown-item" href="{{ route('espacevente.voirannonce') }}"><span class="head8">Voir les annonces</span></a></li>
-                    <li><a class="dropdown-item" href="{{ route('espacevente.publierannonce') }}"><span class="head8">Publier une annonce</span></a></li>
+                    <li><a class="dropdown-item" href="{{ route('voireannonce') }}"><span class="head8">Voir les annonces</span></a></li>
+                    <li><a class="dropdown-item" href="{{ route('voireannonce.create') }}"><span class="head8">Publier une annonce</span></a></li>
                    </ul>
               </li>
               <li class="nav-item">
