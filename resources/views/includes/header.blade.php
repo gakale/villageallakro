@@ -64,7 +64,8 @@
                 <ul class="dropdown-menu head7">
                     <li><a class="dropdown-item" href="{{ route('offre_emplois.index') }}"><span class="head8">Voir les offres</span></a></li>
                     <li><a class="dropdown-item" href="#"><span class="head8">Voir les profils</span></a></li>
-                    <li><a class="dropdown-item" href="{{ route('offre_emplois.create') }}"><span class="head8">Nouvelle offre/demande</span></a></li>
+                    <li><a class="dropdown-item" href="{{ route('offre_emplois.create') }}"><span class="head8">Nouvelle offre</span></a></li>
+                    <li><a class="dropdown-item" href="{{ route('createdemande.index') }}"><span class="head8">Nouvelle demande</span></a></li>
                     </ul>
               </li>
               <li class="nav-item dropdown head5">
@@ -81,6 +82,7 @@
               <li class="nav-item dropdown head5">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" href="#"><span class="head6">Information</span></a>
                 <ul class="dropdown-menu head7">
+                <li><a class="dropdown-item" href="{{ route('forum') }}"><span class="head8">Forum</span></a></li>
                     <li><a class="dropdown-item" href="{{ route('actualite/amenagement-demenagement') }}"><span class="head8">Amenagement/Déménagement</span></a></li>
                     <li><a class="dropdown-item" href="{{ route('actualite/naissance-deces') }}"><span class="head8">Naissance/Décès</span></a></li>
                     <li><a class="dropdown-item" href="{{ route('actualite/actualite') }}"><span class="head8">Actualité</span></a></li>
@@ -110,7 +112,7 @@
                 <a class="nav-link" href="{{ route('contact') }}"><span class="head6">Contacts</span></a>
               </li>
               <form class="d-flex">
-                <input class="form-control me-2" type="text" placeholder="Recherche">
+                <!--<input class="form-control me-2" type="text" placeholder="Recherche"> -->
                 <a href="#">
                   <img src="{{ asset ('img/télécharger-removebg-preview.png') }}" alt="logo_recherche" style="width: 40px;">
                 </a>

@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Offres_emploiController;
 use App\Http\Controllers\VenteController;
+use App\Http\Controllers\EspaceMembreController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -70,13 +72,24 @@ Route::get('/espacevente.voirannonce', [\App\Http\Controllers\VenteController::c
 Route::get('/espacevente.publierannonce', [\App\Http\Controllers\VenteController::class,'show'])->name('espacevente.publierannonce');
 
 
-Route::get('/espacemembre.create', [\App\Http\Controllers\VenteController::class,'create'])->name('espacemembre.create');
-Route::get('/espacemembre.index', [\App\Http\Controllers\VenteController::class,'index'])->name('espacemembre.index');
-Route::get('/espacemembre.show', [\App\Http\Controllers\VenteController::class,'show'])->name('espacemembre.show');
+Route::get('/espacemembre.create', [\App\Http\Controllers\EspaceMembreController::class,'create'])->name('espacemembre.create');
+Route::get('/espacemembre.index', [\App\Http\Controllers\EspaceMembreController::class,'index'])->name('espacemembre.index');
+Route::get('/espacemembre.show', [\App\Http\Controllers\EspaceMembreController::class,'show'])->name('espacemembre.show');
 
-Route::post('/espacemembre.store', [\App\Http\Controllers\VenteController::class,'store'])->name('espacemembre.store');
+Route::post('/espacemembre.store', [\App\Http\Controllers\EspaceMembreController::class,'store'])->name('espacemembre.store');
 
 
+Route::get('/createdemande.create', [\App\Http\Controllers\CreateDemandeController::class,'create'])->name('createdemande.create');
+Route::get('/createdemande.index', [\App\Http\Controllers\CreateDemandeController::class,'index'])->name('createdemande.index');
+Route::get('/createdemande.show', [\App\Http\Controllers\CreateDemandeController::class,'show'])->name('createdemande.show');
+
+Route::post('/createdemande.store', [\App\Http\Controllers\CreateDemandeController::class,'store'])->name('createdemande.store');
+
+
+
+Route::get('/forum', function () {
+    return view('forum');
+})->name('forum');
 
 
 Route::get('/actualite', function () {
