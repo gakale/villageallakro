@@ -69,21 +69,24 @@
               <li class="nav-item dropdown head5">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" href="#"><span class="head6">Espace santé</span></a>
                 <ul class="dropdown-menu head7">
+<<<<<<< HEAD
                     <li><a class="dropdown-item" href="{{ route('pharmacie') }}"><span class="head8">Pharmacie</span></a></li>
+=======
+>>>>>>> berci
                     <li>
-                      <a class="dropdown-item" href="#"><span class="head8">Espace santé </span></a>
-                        <ul class="dropright-menu head7">
-                          <li><a class="dropdown-item" href="{{ route('espacesante/centredesante') }}"><span class="head8">Centres de santé</span></a></li>
-                          <li><a class="dropdown-item" href="{{ route('espacesante/maladiesepidemies') }}"><span class="head8">Maladies et épidemies </span></a></li>
+                      <a class="dropdown-item" href="{{ route('espacesante/pharmacie') }}"><span class="head8">Pharmacie</span></a></li>
+                      <li>
+                      <a class="dropdown-item" href="{{ route('espacesante/centredesante') }}"><span class="head8">Centres de santé</span></a></li>
+                      <li>
+                      <a class="dropdown-item" href="{{ route('espacesante/maladiesepidemies') }}"><span class="head8">Maladies et épidemies </span></a></li>
                     </ul>
-                    </li>
-                </ul>
               </li>
               <li class="nav-item dropdown head5">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" href="#"><span class="head6">Actualité</span></a>
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" href="#"><span class="head6">Information</span></a>
                 <ul class="dropdown-menu head7">
                     <li><a class="dropdown-item" href="{{ route('actualite/amenagement-demenagement') }}"><span class="head8">Amenagement/Déménagement</span></a></li>
                     <li><a class="dropdown-item" href="{{ route('actualite/naissance-deces') }}"><span class="head8">Naissance/Décès</span></a></li>
+                    <li><a class="dropdown-item" href="{{ route('actualite/actualite') }}"><span class="head8">Actualité</span></a></li>
                     <li><a class="dropdown-item" href="{{ route('actualite/projetdemairie') }}"><span class="head8">Projets de mairie</span></a></li>
                   </ul>
               </li>
@@ -96,8 +99,12 @@
                     <li><a class="dropdown-item" href="{{ route('acteurs/centrescommerciaux') }}"><span class="head8">Centres commerciaux</span></a></li>
                   </ul>
               </li> -->
-              <li class="nav-item">
-                <a class="nav-link" href="{{ route('acteurs/acteurslist') }}"><span class="head6">Les acteurs</span></a>
+              <li class="nav-item dropdown head5">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" href="#"><span class="head6">Espace Vente</span></a>
+                <ul class="dropdown-menu head7">
+                    <li><a class="dropdown-item" href="{{ route('voireannonce') }}"><span class="head8">Voir les annonces</span></a></li>
+                    <li><a class="dropdown-item" href="{{ route('voireannonce.create') }}"><span class="head8">Publier une annonce</span></a></li>
+                   </ul>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{{ route('acteurs/centrescommerciaux') }}"><span class="head6">Centres commerciaux</span></a>

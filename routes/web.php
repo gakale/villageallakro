@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Offres_emploiController;
 use App\Http\Controllers\PharmaciesController;
+use App\Http\Controllers\VenteController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -64,6 +66,16 @@ Route::get('/offre_emplois.show', [\App\Http\Controllers\Offres_emploiController
 // store
 Route::post('/offre_emplois.store', [\App\Http\Controllers\Offres_emploiController::class,'store'])->name('offre_emplois.store');
 
+Route::get('/voireannonce', [\App\Http\Controllers\VenteController::class,'index'])->name('voireannonce');
+Route::get('/voireannonce.create', [\App\Http\Controllers\VenteController::class,'create'])->name('voireannonce.create');
+Route::get('/voireannonce.show', [\App\Http\Controllers\VenteController::class,'show'])->name('voireannonce.show');
+// store
+Route::post('/voireannonce.store', [\App\Http\Controllers\VenteController::class,'store'])->name('voireannonce.store');
+
+
+Route::get('/actualite', function () {
+    return view('actualite/actualite');
+})->name('actualite/actualite');
 
 Route::get('/pharmacie', [\App\Http\Controllers\PharmaciesController::class,'index'])->name('pharmacie');
 

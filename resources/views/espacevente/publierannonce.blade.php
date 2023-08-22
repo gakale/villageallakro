@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 
-<title>Allakro Village - Le village au beau milieu d'Abidjan</title>
+<title>Publier annonce - Le village au beau milieu d'Abidjan</title>
 
 <link rel="icon" href="{{ asset('img/core-img/favicon.ico') }}">
 
@@ -28,14 +28,14 @@
     </div>
     @endif
 
-    <h2>Créer une nouvelle offre d'emploi</h2>
+    <h2>Publier une nouvelle annonce artisanale</h2>
 
-    <form action="{{route('offre_emplois.store')}}" method="post">
+    <form action="{{route('voireannonce.store')}}" method="post" enctype="multipart/form-data">
         @csrf
 
         <div class="form-group">
-            <label for="titre">Titre</label>
-            <input type="text" class="form-control" id="titre" name="titre" required>
+            <label for="nom">Nom</label>
+            <input type="text" class="form-control" id="nom" name="nom" required>
         </div>
 
         <div class="form-group">
@@ -44,32 +44,35 @@
         </div>
 
         <div class="form-group">
-            <label for="lieu">Lieu</label>
-            <input type="text" class="form-control" id="lieu" name="lieu" required>
+            <label for="prix">Prix</label>
+            <input type="number" class="form-control" id="prix" name="prix" required>
         </div>
 
         <div class="form-group">
-            <label for="type_contrat">Type de contrat</label>
-            <input type="text" class="form-control" id="type_contrat" name="type_contrat">
+            <label for="categorie">Catégorie</label>
+            <input type="text" class="form-control" id="categorie" name="categorie" required>
         </div>
 
         <div class="form-group">
-            <label for="salaire">Salaire</label>
-            <input type="text" class="form-control" id="salaire" name="salaire" required>
+            <label for="collection">Collection</label>
+            <input type="text" class="form-control" id="collection" name="collection">
         </div>
 
         <div class="form-group">
-            <label for="date_debut">Date de début</label>
-            <input type="date" class="form-control" id="date_debut" name="date_debut" required>
+            <label for="etat">État</label>
+            <input type="text" class="form-control" id="etat" name="etat">
         </div>
 
         <div class="form-group">
-            <label for="date_fin">Date de fin</label>
-            <input type="date" class="form-control" id="date_fin" name="date_fin" required>
+            <label for="photo">Photo</label>
+            <input type="file" class="form-control" id="photo" name="photo">
         </div>
 
+        <input type="hidden" id="statut" name="statut" value="en attend">
+
+
         <div class="form-group">
-            <label for="acteur_id">Qui offre l'emploie</label>
+            <label for="acteur_id">Acteur</label>
             <select class="form-control" id="acteur_id" name="acteur_id" required>
                 @foreach($acteurs as $acteur)
                 <option value="{{ $acteur->id }}">{{ $acteur->nom }}</option>
@@ -77,9 +80,10 @@
             </select>
         </div>
 
-        <button type="submit" class="btn btn-primary">Créer</button>
+        <button type="submit" class="btn btn-primary">Créer une annonce</button>
     </form>
 </div>
+
 <script>
     // Si le message de succès existe, le faire disparaître après 3 secondes
     if (document.getElementById('successMessage')) {
