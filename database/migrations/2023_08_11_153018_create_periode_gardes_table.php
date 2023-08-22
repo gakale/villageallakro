@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('periode_gardes', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_pharmacie');
-            $table->foreign('id_pharmacie')->references('id')->on('pharmacies')->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger('pharmacie_id'); // Si vous avez une relation avec le modèle Pharmacie
+            $table->foreign('pharmacie_id')->references('id')->on('pharmacies')->onDelete('cascade')->onUpdate('cascade');
             $table->string('jour');
             $table->string('heure_debut');
             $table->string('heure_fin');

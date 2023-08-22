@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Offres_emploiController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -57,13 +57,13 @@ Route::get('/404', function () {
     return view('404');
 })->name('404');
 
-Route::get('/offres', function () {
-    return view('offredemploi/offres');
-})->name('offredemploi/offres');
+Route::get('/offre_emplois.create', [\App\Http\Controllers\Offres_emploiController::class,'create'])->name('offre_emplois.create');
+Route::get('/offre_emplois.index', [\App\Http\Controllers\Offres_emploiController::class,'index'])->name('offre_emplois.index');
+Route::get('/offre_emplois.show', [\App\Http\Controllers\Offres_emploiController::class,'show'])->name('offre_emplois.show');
+// store
+Route::post('/offre_emplois.store', [\App\Http\Controllers\Offres_emploiController::class,'store'])->name('offre_emplois.store');
 
-Route::get('/profils', function () {
-    return view('offredemploi/profils');
-})->name('offredemploi/profils');
+
 
 Route::get('/nouvelleoffre-demande', function () {
     return view('offredemploi/nouvelleoffre-demande');

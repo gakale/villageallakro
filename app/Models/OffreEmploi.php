@@ -18,8 +18,10 @@ class OffreEmploi extends Model
         'salaire',
         'date_debut',
         'date_fin',
-        'id_acteur',
+        'acteur_id',
     ];
+
+
 
     public function acteur()
     {

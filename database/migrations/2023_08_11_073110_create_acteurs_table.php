@@ -23,7 +23,6 @@ return new class extends Migration
             $table->string('telephone');
             $table->string('email');
             $table->integer('nbre_enfant');
-            $table->string('profession')->nullable();
             $table->timestamps();
 
         });

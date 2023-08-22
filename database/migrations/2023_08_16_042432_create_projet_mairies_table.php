@@ -17,10 +17,10 @@ return new class extends Migration
             $table->string('description');
             $table->string('image');
             $table->string('video');
-            $table->unsignedBigInteger('id_mairie');
-            $table->foreign('id_mairie')->references('id')->on('mairies')->onDelete('cascade');
-            $table->unsignedBigInteger('id_acteur'); // Si vous avez une relation avec le modèle Acteur
-            $table->foreign('id_acteur')->references('id')->on('acteurs')->onDelete('cascade');
+            $table->unsignedBigInteger('maire_id'); // Si vous avez une relation avec le modèle Maire
+            $table->foreign('maire_id')->references('id')->on('mairies')->onDelete('cascade');
+            $table->unsignedBigInteger('acteur_id'); // Si vous avez une relation avec le modèle Acteur
+            $table->foreign('acteur_id')->references('id')->on('acteurs')->onDelete('cascade');
             $table->timestamps();
         });
     }
