@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CentreSante;
 use Illuminate\Http\Request;
 
 class Centres_santeController extends Controller
@@ -11,7 +12,11 @@ class Centres_santeController extends Controller
      */
     public function index()
     {
-        //
+        $centres = CentreSante::all();
+
+        return view('espacesante.centredesante', compact('centres'));
+
+
     }
 
     /**

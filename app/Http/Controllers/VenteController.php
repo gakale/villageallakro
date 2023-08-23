@@ -48,13 +48,6 @@ class VenteController extends Controller
             'statut' => 'nullable|string|max:255',
             'acteur_id' => 'required|exists:acteurs,id',
         ]);
-
-        // Télécharger l'image si elle est fournie
-        if ($request->hasFile('photo')) {
-            $imageName = time() . '.' . $request->photo->extension();
-            $request->photo->storeAs('images', $imageName);
-        }
-
         // Créer une nouvelle entrée dans la base de données
         $artisanale = new Artisanale;
         $artisanale->nom = $request->nom;
@@ -63,10 +56,20 @@ class VenteController extends Controller
         $artisanale->categorie = $request->categorie;
         $artisanale->collection = $request->collection;
         $artisanale->etat = $request->etat;
-        $artisanale->photo = isset($imageName) ? 'images/' . $imageName : null;
         $artisanale->statut = $request->statut;
         $artisanale->acteur_id = $request->acteur_id;
+
+// Télécharger l'image si elle est fournie
+        if ($request->hasFile('photo')) {
+            $imageName = time().'.'.$request->photo->extension();
+            $request->photo->storeAs('images', $imageName);
+            $artisanale->photo = 'images/'.$imageName;
+        } else {
+            $artisanale->photo = null;
+        }
+
         $artisanale->save();
+
 
         // Rediriger vers une page avec un message de succès
         return redirect()->route('voireannonce.create')->with('success', 'Annonce artisanale créée avec succès!');

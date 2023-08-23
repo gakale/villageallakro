@@ -79,13 +79,8 @@ Route::get('/actualite', function () {
 
 Route::get('/pharmacie', [\App\Http\Controllers\PharmaciesController::class,'index'])->name('pharmacie');
 
-Route::get('/espacesante', function () {
-    return view('espacesante/espacesante');
-})->name('espacesante/espacesante');
 
-Route::get('/centredesante', function () {
-    return view('espacesante/centredesante');
-})->name('espacesante/centredesante');
+Route::get('/centredesante', [\App\Http\Controllers\Centres_santeController::class,'index'])->name('espacesante.centredesante');
 
 Route::get('/maladiesepidemies', function () {
     return view('espacesante/maladiesepidemies');

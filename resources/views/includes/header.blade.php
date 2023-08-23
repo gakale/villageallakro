@@ -69,14 +69,10 @@
               <li class="nav-item dropdown head5">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" href="#"><span class="head6">Espace santé</span></a>
                 <ul class="dropdown-menu head7">
-<<<<<<< HEAD
                     <li><a class="dropdown-item" href="{{ route('pharmacie') }}"><span class="head8">Pharmacie</span></a></li>
-=======
->>>>>>> berci
                     <li>
-                      <a class="dropdown-item" href="{{ route('espacesante/pharmacie') }}"><span class="head8">Pharmacie</span></a></li>
                       <li>
-                      <a class="dropdown-item" href="{{ route('espacesante/centredesante') }}"><span class="head8">Centres de santé</span></a></li>
+                      <a class="dropdown-item" href="{{ route('espacesante.centredesante') }}"><span class="head8">Centres de santé</span></a></li>
                       <li>
                       <a class="dropdown-item" href="{{ route('espacesante/maladiesepidemies') }}"><span class="head8">Maladies et épidemies </span></a></li>
                     </ul>
