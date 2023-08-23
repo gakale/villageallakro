@@ -72,12 +72,9 @@
 
 
         <div class="form-group">
-            <label for="acteur_id">Acteur</label>
-            <select class="form-control" id="acteur_id" name="acteur_id" required>
-                @foreach($acteurs as $acteur)
-                <option value="{{ $acteur->id }}">{{ $acteur->nom }}</option>
-                @endforeach
-            </select>
+            <label for="acteur_id">Qui publie </label>
+            <input type="text" disabled class="form-control" name="users_id" value="{{ Auth::user()->id }}">
+
         </div>
 
         <button type="submit" class="btn btn-primary">Créer une annonce</button>

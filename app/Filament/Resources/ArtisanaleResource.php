@@ -60,9 +60,9 @@ class ArtisanaleResource extends Resource
                         'en vente' => 'En vente',
                     ])
                     ->placeholder('Statut'),
-                Select::make('acteur_id')
-                    ->label('Acteur')
-                    ->relationship('acteur', 'nom', )
+                Select::make('users_id')
+                    ->label('users')
+                    ->relationship('users', 'name', )
                     ->required(),
 
             ]);

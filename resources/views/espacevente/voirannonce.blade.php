@@ -91,14 +91,22 @@
                         <div class="single-post-area mb-50">
                             <div class="post-thumbnail">
                                 <!-- Affichage de l'image de la vente -->
-                                <img src="{{ asset($vente->photo) }}" alt="{{$vente->nom}}" />
+                                <img src="{{ asset('img/bg-img/supermarche-sococe.png') }}" alt="" />
 
                                 <span class="video-duration">05.03</span> <!-- Si vous avez une durée ou autre info, remplacez ici -->
                             </div>
 
                             <div class="post-content">
                                 <a href="#" class="post-cata cata-sm cata-success">Annonce </a>
-                                <a href="single-post.html" class="post-title">{{$vente->nom}}</a>
+                                <a href="single-post.html" class="post-title"><span>Nom : </span>{{$vente->nom}}</a>
+                                <p class="post-excerpt"> <span>Description : </span>{{$vente->description}}</p>
+                                <a href="single-post.html" class="post-title"><span>Prix : </span>{{$vente->prix}}</a>
+                                <a href="single-post.html" class="post-title"><span>categorie : </span>{{$vente->categorie}}</a>
+                                <a href="single-post.html" class="post-title"><span>Collection : </span>{{$vente->collection}}</a>
+                                <a href="single-post.html" class="post-title"><span>Etat : </span>{{$vente->etat}}</a>
+
+
+
                                 <div class="post-meta d-flex">
                                     <!-- Vous pouvez remplacer ces icônes et compteurs par des informations pertinentes de votre modèle -->
                                     <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 22</a>

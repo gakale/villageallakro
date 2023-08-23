@@ -89,12 +89,18 @@
                         <div class="col-12 col-md-6">
                             <div class="single-post-area mb-50">
                                 <div class="post-thumbnail">
-                                    <img src="img/bg-img/LogoPharmacie.jpg" alt="" />
+                                    <img src="{{asset('')}}" alt="" />
                                 </div>
 
                                 <div class="post-content">
                                     <a href="#" class="post-cata cata-sm cata-success">Pharmacie</a>
-                                    <a href="single-post.html" class="post-title"> {{$pharmacie->nom}}</a>
+                                    <a href="single-post.html" class="post-title"><span>Nom: </span>{{$pharmacie->nom}}</a>
+                                    <a href="#" class="post-author"> <span>Phone: </span> {{$pharmacie->telephone}}</a>
+                                    <a href="#" class="post-author"><span>Adresse: </span> {{$pharmacie->adresse}}</a>
+                                    <a href="#" class="post-author"><span>Email: </span> {{$pharmacie->email}}</a>
+                                    <a href="#" class="post-author">{{$pharmacie->horaire_ouverture}}</a>
+                                    <a href="#" class="post-author">{{$pharmacie->horaire_fermeture}}</a>
+                                    <a href="#" class="post-author">{{$pharmacie->site_web}}</a>
                                     <div class="post-meta d-flex">
                                         <p>{{$pharmacie->adresse}} </p>
                                         <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>22 </a>

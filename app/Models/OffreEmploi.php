@@ -10,7 +10,7 @@ class OffreEmploi extends Model
     use HasFactory;
 
     protected $fillable = [
-        'id_offre_emploi',
+        'offre_emploi_id',
         'titre',
         'description',
         'lieu',
@@ -18,13 +18,13 @@ class OffreEmploi extends Model
         'salaire',
         'date_debut',
         'date_fin',
-        'acteur_id',
+        'users_id',
     ];
 
 
 
-    public function acteur()
+    public function users()
     {
-        return $this->belongsTo(Acteur::class, 'id_acteur');
+        return $this->belongsTo(Acteur::class, 'users_id');
     }
 }

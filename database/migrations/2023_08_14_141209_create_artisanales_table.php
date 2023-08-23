@@ -21,8 +21,8 @@ return new class extends Migration
             $table->string('etat');
             $table->string('photo');
             $table->string('statut');
-            $table->unsignedBigInteger('acteur_id'); // Si vous avez une relation avec le modèle Acteur
-            $table->foreign('acteur_id')->references('id')->on('acteurs')->onDelete('cascade');
+            $table->unsignedBigInteger('users_id'); // Si vous avez une relation avec le modèle Acteur
+            $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

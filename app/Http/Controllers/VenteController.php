@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Acteur;
 use App\Models\Artisanale;
+use Illuminate\Support\Facades\Auth;
 
 
 class VenteController extends Controller
@@ -13,6 +14,12 @@ class VenteController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth')->only(['create', 'store']);
+    }
+
     public function index()
     {
         // je doit recupéré uniquement ceux qui sont en vente
@@ -35,7 +42,6 @@ class VenteController extends Controller
      */
     public function store(Request $request)
     {
-
         // Valider les données du formulaire
         $request->validate([
             'nom' => 'required|string|max:255',
@@ -46,7 +52,7 @@ class VenteController extends Controller
             'etat' => 'nullable|string|max:255',
             'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'statut' => 'nullable|string|max:255',
-            'acteur_id' => 'required|exists:acteurs,id',
+            'users_id' => 'exists:users,id',
         ]);
         // Créer une nouvelle entrée dans la base de données
         $artisanale = new Artisanale;
@@ -57,9 +63,9 @@ class VenteController extends Controller
         $artisanale->collection = $request->collection;
         $artisanale->etat = $request->etat;
         $artisanale->statut = $request->statut;
-        $artisanale->acteur_id = $request->acteur_id;
+        $artisanale->users_id = Auth::user()->id;  // Ajoutez cette ligne
 
-// Télécharger l'image si elle est fournie
+            // Télécharger l'image si elle est fournie
         if ($request->hasFile('photo')) {
             $imageName = time().'.'.$request->photo->extension();
             $request->photo->storeAs('images', $imageName);
@@ -69,6 +75,7 @@ class VenteController extends Controller
         }
 
         $artisanale->save();
+
 
 
         // Rediriger vers une page avec un message de succès

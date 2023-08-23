@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Http\Controllers\UserController;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -18,10 +19,10 @@ class Artisanale extends Model
         'etat',
         'photo',
         'statut',
-        'acteur_id',
+        'users_id',
     ];
-    public function acteur()
+    public function users()
     {
-        return $this->belongsTo(Acteur::class);
+        return $this->belongsTo(User::class);
     }
 }

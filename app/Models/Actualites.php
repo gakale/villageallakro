@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use App\Models\User;
 class Actualites extends Model
 {
     use HasFactory;
@@ -15,13 +15,13 @@ class Actualites extends Model
         'image',
         'categorie',
         'statut',
-        'acteur_id',
+        'users_id',
         'contenu',
 
     ];
 
-    public function acteur()
+    public function users()
     {
-        return $this->belongsTo(Acteur::class);
+        return $this->belongsTo(User::class);
     }
 }

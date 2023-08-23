@@ -70,14 +70,11 @@
 
         <div class="form-group">
             <label for="acteur_id">Qui offre l'emploie</label>
-            <select class="form-control" id="acteur_id" name="acteur_id" required>
-                @foreach($acteurs as $acteur)
-                <option value="{{ $acteur->id }}">{{ $acteur->nom }}</option>
-                @endforeach
-            </select>
+                <input type="text" disabled class="form-control" id="users_id" value="{{ Auth::user()->id }}">
+
         </div>
 
-        <button type="submit" class="btn btn-primary">Créer</button>
+        <button type="submit" class="btn btn-primary">Créer une offre</button>
     </form>
 </div>
 <script>

@@ -48,8 +48,8 @@ class OffreEmploiResource extends Resource
                 DateTimePicker::make('date_fin')
                     ->required()
                     ->placeholder('Date de fin'),
-                Select::make('acteur_id')
-                    ->relationship('acteur', 'nom')
+                Select::make('users_id')
+                    ->relationship('users', 'name')
                     ->required()
                     ->placeholder('Qui offre l\'emploi'),
             ]);
@@ -80,7 +80,7 @@ class OffreEmploiResource extends Resource
                 Tables\Columns\TextColumn::make('date_fin')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('acteur_id')
+                Tables\Columns\TextColumn::make('users.name')
                     ->searchable()
                     ->sortable(),
             ])

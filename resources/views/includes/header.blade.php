@@ -17,7 +17,7 @@
             <div class="container">
                 <div class="col-sm-12 col-md-12 col-lg-12 head1">
                     <a href="#">20531 visiteurs <img src="{{ asset('img/467965-removebg-preview (2).png') }}" alt="logo_visibilité" style="width: 30px;"></a>
-                    <a href="{{ route('filament.pages.dashboard') }}">Espace Admin <img src="{{ asset('img/logo_messagerie.png') }}" alt="logo_messagerie" style="width: 25px;"></a>
+                    <a href="{{ route('logins') }}">Espace Utilisateur <img src="{{ asset('img/logo_messagerie.png') }}" alt="logo_messagerie" style="width: 25px;"></a>
                 </div>
             </div>
         </div>
@@ -82,7 +82,7 @@
                 <ul class="dropdown-menu head7">
                     <li><a class="dropdown-item" href="{{ route('actualite/amenagement-demenagement') }}"><span class="head8">Amenagement/Déménagement</span></a></li>
                     <li><a class="dropdown-item" href="{{ route('actualite/naissance-deces') }}"><span class="head8">Naissance/Décès</span></a></li>
-                    <li><a class="dropdown-item" href="{{ route('actualite/actualite') }}"><span class="head8">Actualité</span></a></li>
+                    <li><a class="dropdown-item" href="{{ route('actualites') }}"><span class="head8">Actualité</span></a></li>
                     <li><a class="dropdown-item" href="{{ route('actualite/projetdemairie') }}"><span class="head8">Projets de mairie</span></a></li>
                   </ul>
               </li>
