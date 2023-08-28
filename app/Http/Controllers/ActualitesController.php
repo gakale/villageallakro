@@ -48,7 +48,6 @@ class ActualitesController extends Controller
         $actualite->date_publication = $request->date_publication;
         $actualite->categorie = $request->categorie;
         $actualite->users_id = Auth::user()->id;  // Ajoutez cette ligne
-
         // Télécharger l'image si elle est fournie
         if ($request->hasFile('image')) {
             $imageName = time().'.'.$request->image->extension();
