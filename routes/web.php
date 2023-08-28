@@ -127,5 +127,9 @@ Route::get('/demenagement1', function () {
     return view('articles\amenagement-demenagement\demenagement1');
 })->name('demenagement1');
 
+Route::get('/forum', function () {
+    return view('forum');
+})->name('forum');
+
 // logout route
 Route::post('/logout', [\App\Http\Controllers\UserController::class,'logout'])->name('logout');

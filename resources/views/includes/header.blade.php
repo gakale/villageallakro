@@ -83,6 +83,7 @@
                     <li><a class="dropdown-item" href="{{ route('actualite/amenagement-demenagement') }}"><span class="head8">Amenagement/Déménagement</span></a></li>
                     <li><a class="dropdown-item" href="{{ route('actualite/naissance-deces') }}"><span class="head8">Naissance/Décès</span></a></li>
                     <li><a class="dropdown-item" href="{{ route('actualites') }}"><span class="head8">Actualité</span></a></li>
+                    <li><a class="dropdown-item" href="{{ route('forum') }}"><span class="head8">Forum</span></a></li>
                     <li><a class="dropdown-item" href="{{ route('actualite/projetdemairie') }}"><span class="head8">Projets de mairie</span></a></li>
                   </ul>
               </li>
