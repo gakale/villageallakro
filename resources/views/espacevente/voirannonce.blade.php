@@ -5,9 +5,9 @@
     <meta charset="UTF-8" />
     <meta name="description" content="" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="viewport" content="width=device-width, initialg-scale=1, shrink-to-fit=no" />
 
-    <title>Hôpitaux - Allakro Village</title>
+    <title>Espace vente - Allakro Village</title>
 
     <link rel="icon" href="{{ asset('img/core-img/favicon.ico') }}" />
 
@@ -76,7 +76,7 @@
             <div class="col-12 col-lg-8">
                 <div class="archive-catagory-view mb-50 d-flex align-items-center justify-content-between">
                     <div class="archive-catagory">
-                        <h4>Hôpitaux de proximité</h4>
+                        <h4>Espace vente</h4>
                     </div>
 
                     <div class="view-options">
@@ -85,23 +85,31 @@
                     </div>
                 </div>
                 <div class="row">
-                    @foreach($centres as $centre)
+                    @foreach($ventes as $vente)
+
                     <div class="col-12 col-md-6">
                         <div class="single-post-area mb-50">
                             <div class="post-thumbnail">
-                                <img src="img/bg-img/hospital-allakro.png" alt="" />
+                                <!-- Affichage de l'image de la vente -->
+                                <img src="{{ asset('img/bg-img/supermarche-sococe.png') }}" alt="" />
+
+                                <span class="video-duration">05.03</span> <!-- Si vous avez une durée ou autre info, remplacez ici -->
                             </div>
 
                             <div class="post-content">
-                                <a href="#" class="post-cata cata-sm cata-success">Hôpital</a>
-                                <a href="single-post.html" class="post-title">Nom de l'hopital : {{$centre->nom}}</a>
-                                <a href="#" : {{$centre->adresse}} class="post-title">Adresse : {{$centre->adresse}}</a>
-                                <a href="#" class="post-title">Téléphone : {{$centre->telephone}}</a>
-                                <a href="#" class="post-title">Email : {{$centre->email}}</a>
-                                <a href="#" class="post-title">Site web : {{$centre->site_web}}</a>
+                                <a href="#" class="post-cata cata-sm cata-success">Annonce </a>
+                                <a href="single-post.html" class="post-title"><span>Nom : </span>{{$vente->nom}}</a>
+                                <p class="post-excerpt"> <span>Description : </span>{{$vente->description}}</p>
+                                <a href="single-post.html" class="post-title"><span>Prix : </span>{{$vente->prix}}</a>
+                                <a href="single-post.html" class="post-title"><span>categorie : </span>{{$vente->categorie}}</a>
+                                <a href="single-post.html" class="post-title"><span>Collection : </span>{{$vente->collection}}</a>
+                                <a href="single-post.html" class="post-title"><span>Etat : </span>{{$vente->etat}}</a>
+
+
 
                                 <div class="post-meta d-flex">
-                                    <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>22</a>
+                                    <!-- Vous pouvez remplacer ces icônes et compteurs par des informations pertinentes de votre modèle -->
+                                    <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 22</a>
                                     <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 16</a>
                                     <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 15</a>
                                 </div>
@@ -110,6 +118,7 @@
                     </div>
 
                     @endforeach
+
 
 
                     <nav class="mt-50">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Acteur;
 use App\Models\OffreEmploi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class Offres_emploiController extends Controller
 {
@@ -23,7 +24,7 @@ class Offres_emploiController extends Controller
     public function create()
     {
         $acteurs = Acteur::all();
-        return view('offred_emplois.create', ['acteurs' => $acteurs]);
+        return view('offredemploi.create', ['acteurs' => $acteurs]);
     }
 
     /**
@@ -39,10 +40,19 @@ class Offres_emploiController extends Controller
             'salaire' => 'required|string|max:255',
             'date_debut' => 'required|date',
             'date_fin' => 'required|date',
-            'acteur_id' => 'required|exists:acteurs,id',
+            'users_id' => 'exists:users,id',
         ]);
+        $data = new OffreEmploi;
+        $data->titre = $request->titre;
+        $data->description = $request->description;
+        $data->lieu = $request->lieu;
+        $data->type_contrat = $request->type_contrat;
+        $data->salaire = $request->salaire;
+        $data->date_debut = $request->date_debut;
+        $data->date_fin = $request->date_fin;
+        $data->users_id = Auth::user()->id;  // Ajoutez cette ligne
+        $data->save();
 
-        OffreEmploi::create($data);
 
         return redirect()->route('offre_emplois.create')->with('success', 'Offre d\'emploi créée avec succès!');
     }

@@ -36,13 +36,21 @@ class ActualitesResource extends Resource
                     ->directory('actualites'),
                 Select::make('categorie')->label('Catégorie')->options([
                     'Actualité' => 'Actualité',
-                    'Evénement' => 'Evénement',
+                    'naissance' => 'Naissance',
+                    'décès' => 'Décès',
+                    'Amenagement' => 'Amenagement',
+                    'Déménagement' => 'Déménagement',
+                    'Projets de mairie' => 'Projets de mairie',
+
                 ])->required(),
                 Forms\Components\DatePicker::make('date_publication')->label('Date')->required(),
-                Forms\Components\TextInput::make('statut')->label('Status')->required(),
-                Select::make('acteur_id')
-                    ->label('Acteur')
-                    ->relationship('acteur', 'nom', )
+                Select::make('statut')->label('statut')->options([
+                    'en attend' => 'en attente',
+                    'publier' => 'Publier',
+                ])->required(),
+                Select::make('users_id')
+                    ->label('users')
+                    ->relationship('users', 'name', )
                     ->required(),
                 Forms\Components\Card::make([
                     Forms\Components\RichEditor::make('contenu')->label('Contenu')->required(),

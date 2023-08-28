@@ -41,7 +41,7 @@ class PeriodeGardeResource extends Resource
                 Forms\Components\DatePicker::make('date_fin')->label('Date de fin')->required(),
                 Forms\Components\TimePicker::make('heure_debut')->label('Heure de début')->required(),
                 Forms\Components\TimePicker::make('heure_fin')->label('Heure de fin')->required(),
-                Forms\Components\Select::make('id_pharmacie')
+                Forms\Components\Select::make('pharmacie_id')
                     ->label('Pharmacie')
                     ->relationship('pharmacie', 'nom')
                     ->required(),

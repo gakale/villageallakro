@@ -44,7 +44,7 @@ class PharmacieResource extends Resource
                         'published' => 'Published',
                     ])
                     ->rules(['required']),
-                Select::make('id_centre_sante')
+                Select::make('centresante_id')
                     ->label('Centre de santé')
                     ->relationship('CentreSante', 'nom')
                     ->required(),

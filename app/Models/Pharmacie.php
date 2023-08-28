@@ -22,7 +22,7 @@ class Pharmacie extends Model
         'responsable',
         'image',
         'statut',
-        'id_centre_sante',
+        'centresante_id',
     ];
 
     public function centresante():belongsTo

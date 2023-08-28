@@ -2,6 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Offres_emploiController;
+use App\Http\Controllers\PharmaciesController;
+use App\Http\Controllers\VenteController;
+use App\Http\Controllers\Centres_santeController;
+use App\Http\Controllers\ActeursController;
+use App\Http\Controllers\ActualitesController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,9 +23,11 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/login', function () {
-    return view('login');
-})->name('login');
+Route::get('/register', [\App\Http\Controllers\UserController::class,'showRegister'])->name('register');
+Route::post('/login', [\App\Http\Controllers\UserController::class,'login'])->name('login');
+Route::get('/logins', [\App\Http\Controllers\UserController::class,'showLogin'])->name('logins');
+Route::post('/register', [\App\Http\Controllers\UserController::class,'register'])->name('register');
+
 
 Route::get('/index-2', function () {
     return view('index-2');
@@ -53,9 +61,7 @@ Route::get('/video-post', function () {
     return view('video-post');
 })->name('video-post');
 
-Route::get('/404', function () {
-    return view('404');
-})->name('404');
+
 
 Route::get('/offre_emplois.create', [\App\Http\Controllers\Offres_emploiController::class,'create'])->name('offre_emplois.create');
 Route::get('/offre_emplois.index', [\App\Http\Controllers\Offres_emploiController::class,'index'])->name('offre_emplois.index');
@@ -63,23 +69,27 @@ Route::get('/offre_emplois.show', [\App\Http\Controllers\Offres_emploiController
 // store
 Route::post('/offre_emplois.store', [\App\Http\Controllers\Offres_emploiController::class,'store'])->name('offre_emplois.store');
 
+Route::get('/voireannonce', [\App\Http\Controllers\VenteController::class,'index'])->name('voireannonce');
+Route::get('/voireannonce.create', [\App\Http\Controllers\VenteController::class,'create'])->name('voireannonce.create');
+Route::get('/voireannonce.show', [\App\Http\Controllers\VenteController::class,'show'])->name('voireannonce.show') ;
+// store
+Route::post('/voireannonce.store', [\App\Http\Controllers\VenteController::class,'store'])->name('voireannonce.store');
+
+Route::group(['middleware' => 'auth:web,user'], function () {
+    Route::get('profile', [UserController::class, 'profile'])->name('profile');
+
+});
+
+Route::get('/actualites', [\App\Http\Controllers\ActualitesController::class,'index'])->name('actualites');
+Route::get('/actualites.create', [\App\Http\Controllers\ActualitesController::class,'create'])->name('actualites.create');
+Route::get('/actualites.show', [\App\Http\Controllers\ActualitesController::class,'show'])->name('actualites.show');
+// store
+Route::post('/actualites.store', [\App\Http\Controllers\ActualitesController::class,'store'])->name('actualites.store');
+
+Route::get('/pharmacie', [\App\Http\Controllers\PharmaciesController::class,'index'])->name('pharmacie');
 
 
-Route::get('/nouvelleoffre-demande', function () {
-    return view('offredemploi/nouvelleoffre-demande');
-})->name('offredemploi/nouvelleoffre-demande');
-
-Route::get('/pharmacie', function () {
-    return view('espacesante/pharmacie');
-})->name('espacesante/pharmacie');
-
-Route::get('/espacesante', function () {
-    return view('espacesante/espacesante');
-})->name('espacesante/espacesante');
-
-Route::get('/centredesante', function () {
-    return view('espacesante/centredesante');
-})->name('espacesante/centredesante');
+Route::get('/centredesante', [\App\Http\Controllers\Centres_santeController::class,'index'])->name('espacesante.centredesante');
 
 Route::get('/maladiesepidemies', function () {
     return view('espacesante/maladiesepidemies');
@@ -116,3 +126,6 @@ Route::get('/projetdemairie', function () {
 Route::get('/demenagement1', function () {
     return view('articles\amenagement-demenagement\demenagement1');
 })->name('demenagement1');
+
+// logout route
+Route::post('/logout', [\App\Http\Controllers\UserController::class,'logout'])->name('logout');
