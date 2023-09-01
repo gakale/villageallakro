@@ -133,3 +133,7 @@ Route::get('/forum', function () {
 
 // logout route
 Route::post('/logout', [\App\Http\Controllers\UserController::class,'logout'])->name('logout');
+
+Route::get('/espace', function () {
+    return view('espace');
+})->name('espace');
